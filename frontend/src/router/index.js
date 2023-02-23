@@ -3,7 +3,10 @@ import { createRouter, createWebHistory } from "vue-router";
 // import Dashboard from "@/views/Dashboard.vue";
 // import Layout from '@/views/layouts/Layout.vue';
 
+import GuestLayout from "@/views/guest/layout/Layout.vue";
 import GuestIndex from "@/views/guest/Index.vue";
+import GuestBerita from "@/views/guest/Berita.vue";
+// import GuestBeritaShow from "@/views/guest/BeritaShow.vue";
 // import Maps from "@/views/Maps.vue";
 // import JalanIndex from "@/views/jalan/Index.vue";
 // import JalanForm from "@/views/jalan/Form.vue";
@@ -11,18 +14,15 @@ import GuestIndex from "@/views/guest/Index.vue";
 // import JalanExport from "@/views/jalan/Export.vue";
 
 const routes = [
-  { path: '', component: GuestIndex, name: 'guest.index' },
-  // { path: '/login', component: Login, name: 'login' },
-  // {
-    // component: Layout, children: [
-      // { path: '/dashboard', component: Dashboard, name: 'dashboard' },
-      // { path : '/jalan', component : JalanIndex, name : 'jalan.index' },
-      // { path : '/jalan-edit/:id', component : JalanForm, name : 'jalan.edit' },
-      // { path : '/jalan-create', component : JalanForm, name : 'jalan.create' },
-      // { path : '/jalan-import', component : JalanImport, name : 'jalan.import' },
-      // { path : '/jalan-export', component : JalanExport, name : 'jalan.export' }
-    // ]
-  // },
+  { path: '', redirect :'home' },
+  {
+    component: GuestLayout, children: [
+      { path: '/home', component: GuestIndex, name: 'guest.index' },
+      { path: '/berita', component: GuestBerita, name: 'guest.berita' },
+      { path: '/berita/:id', component: GuestBerita, name: 'guest.berita.show' },
+      { path: '/sejarah-desa', component: GuestBerita, name: 'guest.sejarah-desa' },
+    ]
+  },
 ];
 
 const router = createRouter({
