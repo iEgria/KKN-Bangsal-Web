@@ -72,8 +72,7 @@
 
     .dropdown-menu {
       &:before {
-        font-family: "FontAwesome";
-        content: "\f0d8";
+        content: "▲";
         position: absolute;
         top: 0;
         left: $dropdown-animation-arrow-left-position;

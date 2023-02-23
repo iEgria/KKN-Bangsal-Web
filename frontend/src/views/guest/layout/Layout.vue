@@ -14,25 +14,30 @@
             <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0 ms-lg-12 ps-lg-5" id="navigation">
                 <ul class="navbar-nav navbar-nav-hover w-100">
                     <li class="nav-item dropdown dropdown-hover mx-2 ms-lg-auto">
-                        <router-link to="/home" class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center">
+                        <router-link to="/home" class="nav-link ps-2 ">
                             Beranda
                         </router-link>
                     </li>
                     <li class="nav-item dropdown dropdown-hover mx-2">
-                        <router-link to="/berita" class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center">
+                        <router-link to="/berita" class="nav-link ps-2 ">
                             Berita
                         </router-link>
                     </li>
                     <li class="nav-item dropdown dropdown-hover mx-2">
-                        <router-link to="/sejarah-desa" class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center">
+                        <router-link to="/sejarah-desa" class="nav-link ps-2 ">
                             Sejarah Desa
                         </router-link>
                     </li>
                     <li class="nav-item dropdown dropdown-hover mx-2">
-                        <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" id="dropdownMenuPages8" data-bs-toggle="dropdown" aria-expanded="false">
-                            Pelayanan
+                        <a class="nav-link ps-2 cursor-pointer" @click="this.showPelayanan = !this.showPelayanan">
+                            Persyaratan Pelayanan
                             <font-awesome-icon icon="angle-down" class="ms-2" />
                         </a>
+                        <div class="dropdown-menu dropdown-menu-animation p-3" :class="this.showPelayanan ? 'show' : ''" aria-labelledby="dropdownMenuPages8" data-bs-popper="static">
+                            <router-link :to="{ name: 'guest.pelayanan.show', params: { id: pelayanan.key } }" class="dropdown-item border-radius-md" v-for="(pelayanan, index) in this.pelayanans" v-bind:key="index" @click="this.showPelayanan = !this.showPelayanan">
+                                <span class="ps-3">{{ pelayanan.value }}</span>
+                            </router-link>
+                        </div>
                     </li>
                     <li class="nav-item dropdown dropdown-hover mx-2">
                         <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" id="dropdownMenuBlocks" data-bs-toggle="dropdown" aria-expanded="false">
@@ -40,12 +45,7 @@
                             <font-awesome-icon icon="angle-down" class="ms-2" />
                         </a>
                     </li>
-                    <li class="nav-item dropdown dropdown-hover mx-2 ">
-                        <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" id="dropdownMenuDocs" data-bs-toggle="dropdown" aria-expanded="false">
-                            Docs
-                            <font-awesome-icon icon="angle-down" class="ms-2" />
-                        </a>
-                    </li>
+
                 </ul>
             </div>
         </div>
@@ -161,10 +161,78 @@ export default {
             header: [
                 process.env.VUE_APP_URL + 'storage/header-1.jpg',
                 process.env.VUE_APP_URL + 'storage/header-2.jpeg',
-                process.env.VUE_APP_URL + 'storage/header-3.jpg',
-                process.env.VUE_APP_URL + 'storage/header-4.jpeg',
-                process.env.VUE_APP_URL + 'storage/header-5.jpg',
+                process.env.VUE_APP_URL + 'storage/header-3.png',
+                process.env.VUE_APP_URL + 'storage/header-4.png',
+                process.env.VUE_APP_URL + 'storage/header-5.png',
             ],
+            showPelayanan: false,
+            pelayanans: [
+                {
+                    key: 'kk-hilang',
+                    value: 'KK Hilang'
+                },
+                {
+                    key: 'kk-perubahan',
+                    value: 'KK Perubahan'
+                },
+                {
+                    key: 'ktp-hilang',
+                    value: 'KTP Hilang'
+                },
+                {
+                    key: 'ktp-baru',
+                    value: 'KTP Baru'
+                },
+                {
+                    key: 'surat-keterangan-tidak-mampu',
+                    value: 'Surat Keterangan Tidak Mampu'
+                },
+                {
+                    key: 'surat-keterangan-usaha',
+                    value: 'Surat Keterangan Usaha'
+                },
+                {
+                    key: 'surat-domisili-perusahaan',
+                    value: 'Surat Domisili Perusahaan'
+                },
+                {
+                    key: 'surat-domisili-perorangan',
+                    value: 'Surat Domisili Perorangan'
+                },
+                {
+                    key: 'surat-boro-berpergian',
+                    value: 'Surat Boro / Berpergian'
+                },
+                {
+                    key: 'skck',
+                    value: 'SKCK'
+                },
+                {
+                    key: 'akta-kelahiran',
+                    value: 'Akta Kelahiran'
+                },
+                {
+                    key: 'akta-kematian',
+                    value: 'Akta Kematian'
+                },
+                {
+                    key: 'pindah-masuk',
+                    value: 'Pindah Masuk'
+                },
+                {
+                    key: 'pindah-keluar',
+                    value: 'Pindah Keluar'
+                },
+                {
+                    key: 'santunan-kematian',
+                    value: 'Santunan Kematian'
+                },
+                {
+                    key: 'pengajuan-bansos-dtks',
+                    value: 'Pengajuan Bansos & DTKS'
+                }
+            ]
+
         }
     },
     mounted() {
