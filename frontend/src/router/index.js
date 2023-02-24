@@ -8,6 +8,7 @@ import GuestIndex from "@/views/guest/Index.vue";
 import GuestBerita from "@/views/guest/Berita.vue";
 import GuestSejarah from "@/views/guest/Sejarah.vue";
 import GuestPelayanan from "@/views/guest/Pelayanan.vue";
+import GuestStrukturOrganisasi from "@/views/guest/StrukturOrganisasi.vue";
 // import GuestBeritaShow from "@/views/guest/BeritaShow.vue";
 // import Maps from "@/views/Maps.vue";
 // import JalanIndex from "@/views/jalan/Index.vue";
@@ -25,6 +26,7 @@ const routes = [
       { path: '/berita/:id', component: GuestBerita, name: 'guest.berita.show' },
       { path: '/sejarah-desa', component: GuestSejarah, name: 'guest.sejarah-desa' },
       { path: '/pelayanan/:id', component: GuestPelayanan, name: 'guest.pelayanan.show' },
+      { path: '/struktur-organisasi', component: GuestStrukturOrganisasi, name: 'guest.struktur-organisasi' },
     ]
   },
 ];

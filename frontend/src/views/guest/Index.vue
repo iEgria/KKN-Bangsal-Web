@@ -52,46 +52,14 @@
                     <div class="row">
                         <div class="col-12 col-lg-5 offset-lg-2">
                             <div class="card card-body bg-gradient-danger p-3 mb-3">
-                                <h5 class="text-white text-center h1 font-weight-bolder mb-2 p-2">900</h5>
-                                <p class="text-white text-center">Jumlah UMKM</p>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="card card-body text-center p-2">
-                                            <div class="text-nowrap">
-                                                xxxx
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card card-body text-center p-2">
-                                            <div class="text-nowrap">
-                                                xxxx
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <h5 class="text-white text-center h1 font-weight-bolder mb-2 p-2">-+ 100</h5>
+                                <p class="text-white text-center mb-5 pT-2">Jumlah UMKM</p>
                             </div>
                         </div>
                         <div class="col-12 col-lg-5">
                             <div class="card card-body bg-gradient-success p-3 mb-3">
-                                <h5 class="text-white text-center h1 font-weight-bolder mb-2 p-2">XXXX</h5>
-                                <p class="text-white text-center">Lorem Ipsum</p>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="card card-body text-center p-2">
-                                            <div class="text-nowrap">
-                                                xxxx
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="card card-body text-center p-2">
-                                            <div class="text-nowrap">
-                                                xxxx
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <h5 class="text-white text-center h1 font-weight-bolder mb-2 p-2">7</h5>
+                                <p class="text-white text-center mb-5 pT-2">Jumlah Kelembagaan</p>
                             </div>
                         </div>
                     </div>

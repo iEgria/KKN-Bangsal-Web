@@ -66,11 +66,11 @@
                     </div>
                     <div class="card-body">
                         <div class="card card-body shadow mb-3">
-                            <h5 class="mb-0">Lomba Memasak</h5>
+                            <h5 class="mb-0">Inisiasi Pembentukan Forum Data sebagai penunjang Sistem Informasi Desa (SID)</h5>
                             <small class="text-dark">21 Feb 2023</small>
                         </div>
                         <div class="card card-body shadow mb-3">
-                            <h5 class="mb-0">Lomba Memasak</h5>
+                            <h5 class="mb-0">Pembangunan Indonesia Harus Dimulai dari Desa</h5>
                             <small class="text-dark">21 Feb 2023</small>
                         </div>
                     </div>

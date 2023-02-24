@@ -40,10 +40,9 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown dropdown-hover mx-2">
-                        <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" id="dropdownMenuBlocks" data-bs-toggle="dropdown" aria-expanded="false">
+                        <router-link to="/struktur-organisasi" class="nav-link ps-2 ">
                             Struktur Organisasi
-                            <font-awesome-icon icon="angle-down" class="ms-2" />
-                        </a>
+                        </router-link>
                     </li>
 
                 </ul>
