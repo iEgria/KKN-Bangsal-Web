@@ -7,11 +7,11 @@ import VueAxios from 'vue-axios'
 import ArgonDashboard from "./argon-dashboard";
 import Sweetalert2 from 'vue-sweetalert2';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faInstagram,} from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope, faAngleDown, faLocationDot, faPhone, faMars, faVenus, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faEye, faEyeSlash, faEnvelope, faAngleDown, faLocationDot, faPhone, faMars, faVenus, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-library.add(faInstagram, faEnvelope, faAngleDown, faLocationDot, faPhone, faMars, faVenus, faChevronLeft, faChevronRight);
+library.add(faInstagram, faEye, faEyeSlash, faEnvelope, faAngleDown, faLocationDot, faPhone, faMars, faVenus, faChevronLeft, faChevronRight);
 
 axios.defaults.baseURL = process.env.VUE_APP_API_URL;
 axios.defaults.headers.common = { Authorization: `Bearer ${localStorage.getItem('bearerToken')}`, Accept : 'application/json'};

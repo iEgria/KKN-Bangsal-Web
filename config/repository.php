@@ -234,7 +234,7 @@ return [
         'paths'         => [
             'models'       => 'Entities',
             'repositories' => 'Repositories',
-            'interfaces'   => 'Repositories',
+            'interfaces'   => 'Interfaces',
             'transformers' => 'Transformers',
             'presenters'   => 'Presenters',
             'validators'   => 'Validators',

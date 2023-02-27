@@ -51,15 +51,15 @@
                     </div>
                     <div class="row">
                         <div class="col-12 col-lg-5 offset-lg-2">
-                            <div class="card card-body bg-gradient-danger p-3 mb-3">
-                                <h5 class="text-white text-center h1 font-weight-bolder mb-2 p-2">-+ 100</h5>
-                                <p class="text-white text-center mb-5 pT-2">Jumlah UMKM</p>
+                            <div class="card card-body bg-gradient-danger p-4 mb-3">
+                                <h5 class="text-white text-center h1 font-weight-bolder mt-2">-+ 100</h5>
+                                <p class="text-white text-center m-2">Jumlah UMKM</p>
                             </div>
                         </div>
                         <div class="col-12 col-lg-5">
-                            <div class="card card-body bg-gradient-success p-3 mb-3">
-                                <h5 class="text-white text-center h1 font-weight-bolder mb-2 p-2">7</h5>
-                                <p class="text-white text-center mb-5 pT-2">Jumlah Kelembagaan</p>
+                            <div class="card card-body bg-gradient-success p-4 mb-3">
+                                <h5 class="text-white text-center h1 font-weight-bolder mt-2">7</h5>
+                                <p class="text-white text-center m-2">Jumlah Kelembagaan</p>
                             </div>
                         </div>
                     </div>
