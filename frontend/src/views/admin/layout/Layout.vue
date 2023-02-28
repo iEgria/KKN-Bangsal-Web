@@ -1,161 +1,134 @@
 <template>
-    <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3 navbar-transparent ">
-        <div class="container">
-            <router-link to="/" class="navbar-brand text-white">
-                <h5 class="text-white text-uppercase"> Kelurahan Bangsal </h5>
-            </router-link>
-            <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon mt-2">
-                    <span class="navbar-toggler-bar bar1"></span>
-                    <span class="navbar-toggler-bar bar2"></span>
-                    <span class="navbar-toggler-bar bar3"></span>
-                </span>
-            </button>
-            <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0 ms-lg-12 ps-lg-5" id="navigation">
-                <ul class="navbar-nav navbar-nav-hover w-100">
-                    <li class="nav-item dropdown dropdown-hover mx-2 ms-lg-auto">
-                        <router-link to="/home" class="nav-link ps-2 ">
-                            Beranda
-                        </router-link>
-                    </li>
-                    <li class="nav-item dropdown dropdown-hover mx-2">
-                        <router-link to="/berita" class="nav-link ps-2 ">
-                            Berita
-                        </router-link>
-                    </li>
-                    <li class="nav-item dropdown dropdown-hover mx-2">
-                        <router-link to="/sejarah-desa" class="nav-link ps-2 ">
-                            Sejarah Desa
-                        </router-link>
-                    </li>
-                    <li class="nav-item dropdown dropdown-hover mx-2">
-                        <a class="nav-link ps-2 cursor-pointer" @click="this.showPelayanan = !this.showPelayanan">
-                            Persyaratan Pelayanan
-                            <font-awesome-icon icon="angle-down" class="ms-2" />
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-animation p-3" :class="this.showPelayanan ? 'show' : ''" aria-labelledby="dropdownMenuPages8" data-bs-popper="static">
-                            <router-link :to="{ name: 'guest.pelayanan.show', params: { id: pelayanan.key } }" class="dropdown-item border-radius-md" v-for="(pelayanan, index) in this.pelayanans" v-bind:key="index" @click="this.showPelayanan = !this.showPelayanan">
-                                <span class="ps-3">{{ pelayanan.value }}</span>
-                            </router-link>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown dropdown-hover mx-2">
-                        <router-link to="/struktur-organisasi" class="nav-link ps-2 ">
-                            Struktur Organisasi
-                        </router-link>
-                    </li>
-
-                </ul>
-            </div>
+    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-white" @click="showSidebar(false)">
+        <div class="sidenav-header">
+            <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+            <a class="navbar-brand m-0" :href="this.data.baseUrl" target="_blank">
+                <img :src="this.data.baseUrl + 'favicon.png'" class="navbar-brand-img h-100" alt="main_logo">
+                <span class="ms-1 font-weight-bold">{{ this.data.appTitle }}</span>
+            </a>
+            <hr class="horizontal dark mt-0">
+            <sidebar></sidebar>
         </div>
-    </nav>
-    <header class="bg-gradient-dark">
-        <div class="page-header" :class="this.$route.name == 'guest.index' ? ' min-vh-100' : ' min-vh-15'" :style="'background-image: url(' + this.header[selectedHeader] + ')'">
-            <span class="mask bg-gradient-primary opacity-8"></span>
-            <div class="container">
-                <div v-if="this.$route.name != 'guest.index'" class="p-5"></div>
-                <div class="row justify-content-center" v-if="this.$route.name == 'guest.index'">
-                    <div class="col-lg-8 text-center mx-auto my-auto">
-                        <h1 class="text-white">Kelurahan Bangsal</h1>
-                        <p class="lead mb-0 text-white ">Website Resmi Kelurahan Bangsal</p>
-                        <p class="lead mb-4 text-white opacity-8">
-                            <small>
-                                <font-awesome-icon icon="location-dot"></font-awesome-icon> Kec Pesantren, Kota Kediri
-                                <font-awesome-icon icon="phone" class="ps-3"></font-awesome-icon> {{ this.phone }}
-                            </small>
-                        </p>
-                        <a href="#content" class="btn bg-white text-dark mb-2 mt-5">Jelajahi</a>
-                        <div class="d-flex justify-content-center">
-                            <a href="javascript:;"><i class="fab fa-facebook text-lg text-white me-4"></i></a>
-                            <a href="javascript:;"><i class="fab fa-instagram text-lg text-white me-4"></i></a>
-                            <a href="javascript:;"><i class="fab fa-twitter text-lg text-white me-4"></i></a>
-                            <a href="javascript:;"><i class="fab fa-google-plus text-lg text-white"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="position-absolute w-100 z-index-1 bottom-0" v-if="this.$route.name == 'guest.index'">
-                <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
-                    <defs>
-                        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-                    </defs>
-                    <g class="moving-waves">
-                        <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(255,255,255,0.40" />
-                        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.35)" />
-                        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.25)" />
-                        <use xlink:href="#gentle-wave" x="48" y="8" fill="rgba(255,255,255,0.20)" />
-                        <use xlink:href="#gentle-wave" x="48" y="13" fill="rgba(255,255,255,0.15)" />
-                        <use xlink:href="#gentle-wave" x="48" y="16" fill="rgba(255,255,255,0.15)" />
-                        <use xlink:href="#gentle-wave" x="48" y="16" fill="#F8F9FA" />
-                    </g>
-                </svg>
-            </div>
-        </div>
-    </header>
-    <router-view />
-    <footer class="footer">
-        <hr class="horizontal dark mb-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-6 col-md-3 mb-3">
-                    <h6 class="text-gradient text-primary text-sm">Halaman Terkait</h6>
-                    <div>
-                        <ul class="d-flex flex-row nav">
-                            <li class="nav-item">
-                                <a href="https://kedirikota.go.id/">
-                                    <img :src="this.baseUrl + 'favicon.png'" class="avatar avatar-xl me-3 shadow-lg" alt="user1">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3 mb-3">
-                    <h6 class="text-gradient text-primary text-sm">Hubungi Kami</h6>
-                    <ul class="flex-column ms-n3 nav">
-                        <li class="nav-item">
-                            <a class="nav-link" :href="'mailto:' + this.email" target="_blank">
-                                <font-awesome-icon icon="envelope" class="me-2"></font-awesome-icon>
-                                {{ this.email }}
+    </aside>
+    <main class="main-content position-relative max-height-vh-100 border-radius-lg">
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow bg-white m-3 border-radius-xl" navbar-scroll="true">
+            <div class="container-fluid py-1 px-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
+                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
+                    </ol>
+                    <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+                </nav>
+                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                    <ul class="navbar-nav ms-auto justify-content-end">
+                        <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link text-body p-0" @click="this.showSidebar()">
+                                <div class="sidenav-toggler-inner">
+                                    <i class="sidenav-toggler-line"></i>
+                                    <i class="sidenav-toggler-line"></i>
+                                    <i class="sidenav-toggler-line"></i>
+                                </div>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" :href="'tel:' + this.phone" target="_blank">
-                                <font-awesome-icon icon="phone" class="me-2"></font-awesome-icon>
-                                {{ this.phone }}
+                        <li class="nav-item dropdown pe-2 d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link text-body" @click="this.config.navbarDropDownShow = !this.config.navbarDropDownShow">
+                                <font-awesome-icon icon="user" class="me-2"></font-awesome-icon>{{ this.data.name }}
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://instagram.com/kelurahan_bangsal" target="_blank">
-                                <font-awesome-icon icon="fa-brands fa-instagram" class="me-2"></font-awesome-icon>
-                                @kelurahan_bangsal
-                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end p-1" :class="this.config.navbarDropDownShow ? 'show' : ''">
+                                <li class="m-1">
+                                    <router-link to="admin-setting" class="dropdown-item border-radius-md">
+                                        <div class="d-flex flex-column justify-content-center pt-1">
+                                            <h6 class="text-sm font-weight-normal">
+                                                <font-awesome-icon icon="cog" class="me-1"></font-awesome-icon> Pengaturan
+                                            </h6>
+                                        </div>
+                                    </router-link>
+                                </li>
+                                <li class="m-1">
+                                    <div class="dropdown-item border-radius-md" @click="signOut">
+                                        <div class="d-flex flex-column justify-content-center pt-1">
+                                            <h6 class="text-sm font-weight-normal">
+                                                <font-awesome-icon icon="sign-out" class="me-1"></font-awesome-icon> Keluar
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
-                <div class="col-12 col-md-6 mb-3">
-                    <h6 class="text-gradient text-primary text-sm">Lokasi</h6>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7905.266978538611!2d112.038906!3d-7.828559449999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78577906fbf313%3A0x39470f5765aaa0b1!2sBangsal%2C%20Kec.%20Pesantren%2C%20Kabupaten%20Kediri%2C%20Jawa%20Timur!5e0!3m2!1sid!2sid!4v1677124199591!5m2!1sid!2sid" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-                <div class="col-12">
-                    <div class="text-center">
-                        <p class="my-4 text-sm">
-                            All rights reserved. Copyright © 2023 - <a href="https://kel-bangsal.kedirikota.go.id" target="_blank">Kelurahan Bangsal</a>.
-                        </p>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <div class="min-vh-80">
+                <router-view></router-view>
+            </div>
+            <footer class="footer pt-3">
+                <div class="container-fluid">
+                    <div class="row align-items-center justify-content-lg-between">
+                        <div class="col-lg-12 mb-lg-0 mb-4">
+                            <div class="copyright text-center text-sm text-muted text-lg-start">
+                                Dibuat dengan penuh <font-awesome-icon icon="heart" class="text-gradient text-danger"></font-awesome-icon> oleh <a href="https://www.instagram.com/kkn.bangsal033" class="font-weight-bold" target="_blank">Kelompok 33 KKN Tematik</a> Universitas Nusantara PGRI Kediri
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </footer>
         </div>
-    </footer>
+    </main>
 </template>
 
 <script>
+import Sidebar from './Sidebar.vue';
+
 export default {
-    name: 'GuestIndex',
-    mounted() {
-        document.body.classList.add('bg-gradient-primary');
+    name: 'Layout',
+    components: { Sidebar },
+    data() {
+        return {
+            data: {
+                baseUrl: process.env.VUE_APP_URL,
+                appTitle: process.env.VUE_APP_TITLE,
+                name: window.localStorage.name
+            },
+            config: {
+                navbarDropDownShow: false,
+                showSidebar: false,
+            }
+        }
     },
-    onmounted() {
-        document.body.classList.remove('bg-gradient-primary');
+    methods: {
+        showSidebar() {
+            this.config.showSidebar = !this.config.showSidebar;
+            if (this.config.showSidebar) {
+                document.body.classList.add('g-sidenav-pinned');
+                document.body.classList.add('g-sidenav-show');
+            } else {
+                document.body.classList.remove('g-sidenav-pinned');
+                document.body.classList.remove('g-sidenav-show');
+            }
+        },
+        signOut() {
+            let self = this;
+            this.$swal.fire({
+                icon: 'question',
+                title: 'Keluar',
+                text: "Keluar dari Aplikasi?",
+                showCancelButton: true,
+                cancelButtonText: 'Batal'
+            }).then(function (result) {
+                if (result.isConfirmed) {
+                    self.axios.post('auth/logout').then((response) => {
+                        self.$swal.fire({
+                            icon: 'success',
+                            text: response.data.message,
+                        });
+                        self.$router.push({ name: 'auth.login' });
+                    });
+                }
+            });
+        }
     }
 }
 </script>

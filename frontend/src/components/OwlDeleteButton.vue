@@ -26,6 +26,7 @@ export default {
                     self.axios.delete(self.url).then((response) => {
                         if (response.data.deleted) {
                             self.$router.push({ name: self.redirectUrl });
+                            self.$router.go(0);
                         } else {
                             self.$swal.fire({
                                 icon: 'error',

@@ -50,15 +50,35 @@ export default {
     methods: {
         login() {
             this.axios.post('auth/login', this.data).then((response) => {
-                console.log(response);
+                if (response.data.error) {
+                    this.$swal.fire({
+                        icon: 'error',
+                        title: response.data.message,
+                    });
+                } else {
+                    this.axios.defaults.headers.common = { Authorization: `Bearer ${response.data.data.token}`, Accept: 'application/json' };
+                    window.localStorage.setItem('bearerToken', response.data.data.token);
+                    window.localStorage.setItem('roles', response.data.data.roles);
+                    window.localStorage.setItem('name', response.data.data.name);
+                    this.$router.push({ name: 'admin.dashboard' });
+                }
             });
         }
     },
     mounted() {
-        document.body.classList.add('bg-gradient-primary');
+        this.axios.post('auth/checkSession').then((response) => {
+            if (response.data.data) {
+                window.localStorage.setItem('roles', response.data.data.roles);
+                window.localStorage.setItem('name', response.data.data.name);
+                this.$router.push({ name: 'admin.dashboard' });
+            }
+        });
+        document.body.style.backgroundImage = "url(" + this.baseUrl + "storage/kantor-kelurahan.jpeg)";
+        document.body.style.backgroundSize = "cover";
     },
     unmounted() {
-        document.body.classList.remove('bg-gradient-primary');
+        document.body.style.backgroundImage = "";
+        document.body.style.backgroundSize = "";
     },
 }
 </script>
