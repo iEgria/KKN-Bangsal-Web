@@ -12,21 +12,21 @@
                                     <div class="col">
                                         <div class="card card-body text-center p-2">
                                             <div class="text-nowrap">
-                                                <font-awesome-icon icon="mars" class="text-gradient text-info"></font-awesome-icon> 3.166
+                                                <font-awesome-icon icon="mars" class="text-gradient text-info"></font-awesome-icon> <span class="text-dark">3.166</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="card card-body text-center p-2">
                                             <div class="text-nowrap">
-                                                <font-awesome-icon icon="venus" class="text-gradient text-danger"></font-awesome-icon> 3.140
+                                                <font-awesome-icon icon="venus" class="text-gradient text-danger"></font-awesome-icon> <span class="text-dark">3.140</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-lg-5">
+                        <router-link to="rt-rw" class="col-12 col-lg-5">
                             <div class="card card-body bg-gradient-warning p-3 mb-3">
                                 <h5 class="text-white text-center h1 font-weight-bolder mb-2 p-2">11,16 Ha</h5>
                                 <p class="text-white text-center">Luas Wilayah</p>
@@ -47,21 +47,21 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </router-link>
                     </div>
-                    <div class="row">
-                        <div class="col-12 col-lg-5 offset-lg-2">
+                    <div class="row" style="cursor: pointer;" @click="this.showUmkm = true">
+                        <router-link to="umkm" class="col-12 col-lg-5 offset-lg-2">
                             <div class="card card-body bg-gradient-danger p-4 mb-3">
                                 <h5 class="text-white text-center h1 font-weight-bolder mt-2">-+ 100</h5>
                                 <p class="text-white text-center m-2">Jumlah UMKM</p>
                             </div>
-                        </div>
-                        <div class="col-12 col-lg-5">
+                        </router-link>
+                        <router-link to="kelembagaan" class="col-12 col-lg-5">
                             <div class="card card-body bg-gradient-success p-4 mb-3">
                                 <h5 class="text-white text-center h1 font-weight-bolder mt-2">7</h5>
                                 <p class="text-white text-center m-2">Jumlah Kelembagaan</p>
                             </div>
-                        </div>
+                        </router-link>
                     </div>
                 </div>
                 <div class="col-lg-4 ms-auto mt-lg-0">
@@ -74,13 +74,9 @@
                         </div>
                         <div class="card-body">
                             <a href="javascript:;">
-                                <h5 class="mt-3">
-                                    Kantor Kelurahan Bangsal
-                                </h5>
+                                <h5 class="mt-0"> Kantor Kelurahan Bangsal </h5>
                             </a>
-                            <p>
-                                Kantor Kelurahan Bangsal ..... ..... ........... ..... ........ ......... ......
-                            </p>
+                            <p> Kecamatan Pesantren, Kota Kediri, Provinsi Jawa Timur </p>
                         </div>
                     </div>
                 </div>
@@ -153,20 +149,20 @@
         <div class="container">
             <h3 class="text-gradient text-primary text-center mb-4">Galeri</h3>
             <div class="d-flex">
-                <div class="w-1">
+                <div class="w-1 pt-3">
                     <font-awesome-icon icon="chevron-left" class="text-primary cursor-pointer mt-5" @click="(this.startPhotos > 0 ? this.startPhotos-- : '')" />
                 </div>
                 <div class="w-100 mx-3">
-                    <div class="row">
+                    <div class="row" id="images">
                         <template v-for="(photo, index) in photos" v-bind:key="index">
-                            <div class="col-12 col-md-3 d-md-block" :class="index > 0 ? 'd-none' : ''" v-if="index >= this.startPhotos && index <= this.startPhotos + 3">
-                                <div class="card card-body mb-3 py-6" :style="'background-image: url(' + photo + '); background-position: center; background-size: cover;'"></div>
+                            <div class="col-12 col-md-3 d-md-block" :class="index != this.startPhotos ? 'd-none' : ''" v-if="index >= this.startPhotos && index <= this.startPhotos + 3">
+                                <img class="mb-3 w-100 shadow rounded-3 cursor-pointer" :src="photo" style="height: 150px; object-fit: cover;">
                             </div>
                         </template>
                     </div>
                 </div>
-                <div class="w-1">
-                    <font-awesome-icon icon="chevron-right" class="text-primary cursor-pointer mt-5" @click="(this.startPhotos + 4 < this.photos.length ? this.startPhotos++ : '')" />
+                <div class="w-1 pt-3">
+                    <font-awesome-icon icon="chevron-right" class="text-primary cursor-pointer mt-5" @click="(this.startPhotos < this.photos.length - 1 ? this.startPhotos++ : '')" />
                 </div>
             </div>
         </div>
@@ -174,13 +170,14 @@
 </template>
 
 <script>
+import Viewer from 'viewerjs';
 export default {
     name: 'GuestIndex',
     data() {
         return {
+            showRtRw: false,
+            showUmkm: false,
             baseUrl: process.env.VUE_APP_URL,
-            phone: "(0355) xxxx",
-            email: "info@kec-bangsal.kedirikota.go.id",
             startPhotos: 0,
             photos: [
                 'https://www.tzuchi.or.id/inliners/201810/foto_1_TZC_6585.JPG',
@@ -217,6 +214,9 @@ export default {
                 }
             ],
         }
+    },
+    mounted() {
+        new Viewer(document.getElementById('images'));
     }
 }
 </script>

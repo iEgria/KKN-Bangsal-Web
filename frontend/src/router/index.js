@@ -6,6 +6,9 @@ import Login from "@/views/Login.vue";
 
 import GuestLayout from "@/views/guest/layout/Layout.vue";
 import GuestIndex from "@/views/guest/Index.vue";
+import GuestRtRw from "@/views/guest/RtRw.vue";
+import GuestVisiMisi from "@/views/guest/VisiMisi.vue";
+import GuestUmkm from "@/views/guest/Umkm.vue";
 import GuestBerita from "@/views/guest/Berita.vue";
 import GuestSejarah from "@/views/guest/Sejarah.vue";
 import GuestPelayanan from "@/views/guest/Pelayanan.vue";
@@ -16,15 +19,19 @@ import AdminDashboard from "@/views/admin/Dashboard.vue";
 import AdminSetting from "@/views/admin/Setting.vue";
 import AdminMasterPengguna from "@/views/admin/master/user/Index.vue";
 import AdminMasterPenggunaForm from "@/views/admin/master/user/Form.vue";
+import AdminSlider from "@/views/admin/slider/Index.vue";
 
 
 const routes = [
-  { path: '/login', component: Login, name: 'auth.login' },
+  { path: '/auth-login', component: Login, name: 'auth.login' },
   { path: '', redirect :'home' },
   {
     component: GuestLayout, children: [
       { path: '/home', component: GuestIndex, name: 'guest.index' },
+      { path: '/rt-rw', component: GuestRtRw, name: 'guest.rtrw' },
+      { path: '/umkm', component: GuestUmkm, name: 'guest.umkm' },
       { path: '/berita', component: GuestBerita, name: 'guest.berita' },
+      { path: '/visi-misi', component: GuestVisiMisi, name: 'guest.visi-misi' },
       { path: '/berita/:id', component: GuestBerita, name: 'guest.berita.show' },
       { path: '/berita/:id', component: GuestBerita, name: 'guest.berita.show' },
       { path: '/sejarah-desa', component: GuestSejarah, name: 'guest.sejarah-desa' },
@@ -38,14 +45,20 @@ const routes = [
       { path: '/admin-dashboard', component: AdminDashboard, name: 'admin.dashboard', meta: {middleware: auth} },
 
       { path: '/admin-master-pengguna', component: AdminMasterPengguna, name: 'admin.master.pengguna', meta: {middleware: auth} },
-      { path: '/admin-master-pengguna-create', component: AdminMasterPenggunaForm, name: 'admin.master.pengguna.create', meta: {middleware: auth} },
-      { path: '/admin-master-pengguna-edit/:id', component: AdminMasterPenggunaForm, name: 'admin.master.pengguna.edit', meta: {middleware: auth} },
+      { path: '/admin-master-pengguna-create', component: AdminMasterPenggunaForm, name: 'admin.master.pengguna-create', meta: {middleware: auth} },
+      { path: '/admin-master-pengguna-edit/:id', component: AdminMasterPenggunaForm, name: 'admin.master.pengguna-edit', meta: {middleware: auth} },
+
+      { path: '/admin-slider', component: AdminSlider, name: 'admin.slider', meta: {middleware: auth} },
+
+      { path: '/admin-persyaratan-pelayanan', component: AdminMasterPengguna, name: 'admin.data.persyaratan-pelayanan', meta: {middleware: auth} },
+      { path: '/admin-persyaratan-pelayanan-create', component: AdminMasterPenggunaForm, name: 'admin.data.persyaratan-pelayanan-create', meta: {middleware: auth} },
+      { path: '/admin-persyaratan-pelayanan-edit/:id', component: AdminMasterPenggunaForm, name: 'admin.data.persyaratan-pelayanan-edit', meta: {middleware: auth} },
     ]
   }
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL), routes, linkActiveClass: "text-primary active",
+  history: createWebHistory(process.env.BASE_URL), routes, linkActiveClass: "fw-bolder active",
 });
 
 function nextFactory(context, middleware, index) {

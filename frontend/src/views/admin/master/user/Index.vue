@@ -18,7 +18,7 @@
                     </td>
                     <td>
                         <button class="btn btn-sm px-3 bg-gradient-info ms-1 mb-0" @click="this.resetPassword(user.id)"><font-awesome-icon icon="refresh"></font-awesome-icon></button>
-                        <router-link :to="{ name: 'admin.master.pengguna.edit', params: { id: user.id } }" class="btn btn-sm px-3 bg-gradient-warning ms-1 mb-0 text-white">
+                        <router-link :to="{ name: 'admin.master.pengguna-edit', params: { id: user.id } }" class="btn btn-sm px-3 bg-gradient-warning ms-1 mb-0 text-white">
                             <font-awesome-icon icon="pencil"></font-awesome-icon>
                         </router-link>
                         <owl-delete-button class="btn btn-sm px-3 bg-gradient-danger ms-1 mb-0" :url="'master/user/' + user.id" redirectUrl="admin.master.pengguna">

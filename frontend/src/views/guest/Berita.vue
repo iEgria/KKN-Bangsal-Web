@@ -29,7 +29,7 @@
                 <template v-if="this.$route.params.id">
                     <div class="card card-body">
                         <h4>Inisiasi Pembentukan Forum Data sebagai penunjang Sistem Informasi Desa (SID)</h4>
-                        <small class="text-dark mb-1">23 Februari 2023</small>
+                        <small class="text-dark mb-1">23 Februari 2023 | Dilihat xx Kali</small>
                         <img src="https://kertamulya-padalarang.desa.id/assets/files/data/website-desa-kertamulya-3217082001/indicatornews_3_800x533_L_141260.jpg" class="img-responsive">
                         <div>
                             <div class="col-md-12">

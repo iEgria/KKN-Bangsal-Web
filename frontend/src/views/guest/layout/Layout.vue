@@ -19,6 +19,11 @@
                         </router-link>
                     </li>
                     <li class="nav-item dropdown dropdown-hover mx-2">
+                        <router-link to="/visi-misi" class="nav-link ps-2 ">
+                            Visi Misi
+                        </router-link>
+                    </li>
+                    <li class="nav-item dropdown dropdown-hover mx-2">
                         <router-link to="/berita" class="nav-link ps-2 ">
                             Berita
                         </router-link>
@@ -50,9 +55,9 @@
         </div>
     </nav>
     <header class="bg-gradient-dark">
-        <div class="page-header" :class="this.$route.name == 'guest.index' ? ' min-vh-100' : ' min-vh-15'" :style="'background-image: url(' + this.header[selectedHeader] + ')'">
+        <div class="page-header" :class="this.$route.name == 'guest.index' ? 'min-vh-100' : ' min-vh-15'" :style="'background-image: url(' + this.slider[selectedHeader]['image'] + ')'">
             <span class="mask bg-gradient-primary opacity-8"></span>
-            <div class="container">
+            <div class="container animate__animated animate__slideInRight">
                 <div v-if="this.$route.name != 'guest.index'" class="p-5"></div>
                 <div class="row justify-content-center" v-if="this.$route.name == 'guest.index'">
                     <div class="col-lg-8 text-center mx-auto my-auto">
@@ -101,8 +106,23 @@
                     <h6 class="text-gradient text-primary text-sm">Halaman Terkait</h6>
                     <div>
                         <ul class="d-flex flex-row nav">
-                            <li class="nav-item">
+                            <li class="nav-item mb-3">
                                 <a href="https://kedirikota.go.id/">
+                                    <img :src="this.baseUrl + 'favicon.png'" class="avatar avatar-xl me-3 shadow-lg" alt="user1">
+                                </a>
+                            </li>
+                            <li class="nav-item mb-3">
+                                <a href="https://disdukcapil.kedirikota.go.id/sakti/">
+                                    <img :src="this.baseUrl + 'favicon.png'" class="avatar avatar-xl me-3 shadow-lg" alt="user1">
+                                </a>
+                            </li>
+                            <li class="nav-item mb-3">
+                                <a href="https://kswi.kedirikota.go.id/">
+                                    <img :src="this.baseUrl + 'favicon.png'" class="avatar avatar-xl me-3 shadow-lg" alt="user1">
+                                </a>
+                            </li>
+                            <li class="nav-item mb-3">
+                                <a href="https://oss.go.id/">
                                     <img :src="this.baseUrl + 'favicon.png'" class="avatar avatar-xl me-3 shadow-lg" alt="user1">
                                 </a>
                             </li>
@@ -154,97 +174,103 @@ export default {
     data() {
         return {
             baseUrl: process.env.VUE_APP_URL,
-            phone: "(0355) xxxx",
-            email: "info@kec-bangsal.kedirikota.go.id",
+            phone: "(0354) 699797",
+            email: "pelayanan.kel.bangsal@gmail.com",
             selectedHeader: 0,
-            header: [
-                process.env.VUE_APP_URL + 'storage/header-1.jpg',
-                process.env.VUE_APP_URL + 'storage/header-2.jpeg',
-                process.env.VUE_APP_URL + 'storage/header-3.png',
-                process.env.VUE_APP_URL + 'storage/header-4.png',
-                process.env.VUE_APP_URL + 'storage/header-5.png',
-            ],
-            showPelayanan: false,
-            pelayanans: [
-                {
-                    key: 'kk-hilang',
-                    value: 'KK Hilang'
-                },
-                {
-                    key: 'kk-perubahan',
-                    value: 'KK Perubahan'
-                },
-                {
-                    key: 'ktp-hilang',
-                    value: 'KTP Hilang'
-                },
-                {
-                    key: 'ktp-baru',
-                    value: 'KTP Baru'
-                },
-                {
-                    key: 'surat-keterangan-tidak-mampu',
-                    value: 'Surat Keterangan Tidak Mampu'
-                },
-                {
-                    key: 'surat-keterangan-usaha',
-                    value: 'Surat Keterangan Usaha'
-                },
-                {
-                    key: 'surat-domisili-perusahaan',
-                    value: 'Surat Domisili Perusahaan'
-                },
-                {
-                    key: 'surat-domisili-perorangan',
-                    value: 'Surat Domisili Perorangan'
-                },
-                {
-                    key: 'surat-boro-berpergian',
-                    value: 'Surat Boro / Berpergian'
-                },
-                {
-                    key: 'skck',
-                    value: 'SKCK'
-                },
-                {
-                    key: 'akta-kelahiran',
-                    value: 'Akta Kelahiran'
-                },
-                {
-                    key: 'akta-kematian',
-                    value: 'Akta Kematian'
-                },
-                {
-                    key: 'pindah-masuk',
-                    value: 'Pindah Masuk'
-                },
-                {
-                    key: 'pindah-keluar',
-                    value: 'Pindah Keluar'
-                },
-                {
-                    key: 'santunan-kematian',
-                    value: 'Santunan Kematian'
-                },
-                {
-                    key: 'pengajuan-bansos-dtks',
-                    value: 'Pengajuan Bansos & DTKS'
-                }
+            slider: [
+                { 'image': '' }
             ]
-
         }
     },
+    header: [
+        process.env.VUE_APP_URL + 'storage/header-1.jpg',
+        process.env.VUE_APP_URL + 'storage/header-2.jpeg',
+        process.env.VUE_APP_URL + 'storage/header-3.png',
+        process.env.VUE_APP_URL + 'storage/header-4.png',
+        process.env.VUE_APP_URL + 'storage/header-5.png',
+    ],
+    showPelayanan: false,
+    pelayanans: [
+        {
+            key: 'kk-hilang',
+            value: 'KK Hilang'
+        },
+        {
+            key: 'kk-perubahan',
+            value: 'KK Perubahan'
+        },
+        {
+            key: 'ktp-hilang',
+            value: 'KTP Hilang'
+        },
+        {
+            key: 'ktp-baru',
+            value: 'KTP Baru'
+        },
+        {
+            key: 'surat-keterangan-tidak-mampu',
+            value: 'Surat Keterangan Tidak Mampu'
+        },
+        {
+            key: 'surat-keterangan-usaha',
+            value: 'Surat Keterangan Usaha'
+        },
+        {
+            key: 'surat-domisili-perusahaan',
+            value: 'Surat Domisili Perusahaan'
+        },
+        {
+            key: 'surat-domisili-perorangan',
+            value: 'Surat Domisili Perorangan'
+        },
+        {
+            key: 'surat-boro-berpergian',
+            value: 'Surat Boro / Berpergian'
+        },
+        {
+            key: 'skck',
+            value: 'SKCK'
+        },
+        {
+            key: 'akta-kelahiran',
+            value: 'Akta Kelahiran'
+        },
+        {
+            key: 'akta-kematian',
+            value: 'Akta Kematian'
+        },
+        {
+            key: 'pindah-masuk',
+            value: 'Pindah Masuk'
+        },
+        {
+            key: 'pindah-keluar',
+            value: 'Pindah Keluar'
+        },
+        {
+            key: 'santunan-kematian',
+            value: 'Santunan Kematian'
+        },
+        {
+            key: 'pengajuan-bansos-dtks',
+            value: 'Pengajuan Bansos & DTKS'
+        }
+    ],
     mounted() {
         const sidenav_show = document.querySelector(".g-sidenav-show");
         sidenav_show.classList.remove("g-sidenav-show");
 
         setInterval(() => {
-            if (this.selectedHeader == (this.header.length - 1)) {
+            if (this.selectedHeader == (this.slider.length - 1)) {
                 this.selectedHeader = 0;
             } else {
                 this.selectedHeader++;
             }
         }, 10000);
+
+        this.axios.get('slider').then((response) => {
+            this.slider = response.data.data;
+        });
 
     }
 }

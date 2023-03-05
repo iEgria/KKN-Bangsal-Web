@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\AvatarController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Laravolt\Avatar\Facade as Avatar;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('avatar', function (Request $request) {
+    return Avatar::create($request->name)->toSvg();
 });
