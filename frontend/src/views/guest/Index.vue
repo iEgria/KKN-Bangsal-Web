@@ -180,6 +180,7 @@ export default {
             baseUrl: process.env.VUE_APP_URL,
             startPhotos: 0,
             photos: {},
+            viewer: null,
             beritas: [
                 {
                     judul: 'Kuak Potensi Desa Demi Pembangunan di Indonesia',
@@ -211,6 +212,9 @@ export default {
     methods: {
         changeGaleryPage(number) {
             this.startPhotos = number;
+            setTimeout(() => {
+                this.viewer.update();
+            }, 10);
         },
     },
     mounted() {
@@ -218,8 +222,8 @@ export default {
             if (response.data.data.length > 0) {
                 this.photos = response.data.data;
                 setTimeout(() => {
-                    new Viewer(document.getElementById('images'));
-                }, 10);
+                    this.viewer = new Viewer(document.getElementById('images'));
+                }, 100);
             }
         });
     },
