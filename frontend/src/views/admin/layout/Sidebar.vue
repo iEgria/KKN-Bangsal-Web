@@ -39,6 +39,14 @@
             <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Pengaturan</h6>
         </li>
         <li class="nav-item">
+            <router-link to="/admin-informasi" class="nav-link border-radius-md">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <font-awesome-icon icon="chevron-right"></font-awesome-icon>
+                </div>
+                <span class="nav-link-text ms-1">Informasi</span>
+            </router-link>
+        </li>
+        <li class="nav-item">
             <router-link to="/admin-slider" class="nav-link border-radius-md">
                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                     <font-awesome-icon icon="chevron-right"></font-awesome-icon>
@@ -47,11 +55,11 @@
             </router-link>
         </li>
         <li class="nav-item">
-            <router-link to="/admin-informasi" class="nav-link border-radius-md">
+            <router-link to="/admin-galeri" class="nav-link border-radius-md">
                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                     <font-awesome-icon icon="chevron-right"></font-awesome-icon>
                 </div>
-                <span class="nav-link-text ms-1">Informasi</span>
+                <span class="nav-link-text ms-1">Galeri</span>
             </router-link>
         </li>
         <li class="nav-item">

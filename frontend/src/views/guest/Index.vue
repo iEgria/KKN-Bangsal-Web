@@ -150,19 +150,19 @@
             <h3 class="text-gradient text-primary text-center mb-4">Galeri</h3>
             <div class="d-flex">
                 <div class="w-1 pt-3">
-                    <font-awesome-icon icon="chevron-left" class="text-primary cursor-pointer mt-5" @click="(this.startPhotos > 0 ? this.startPhotos-- : '')" />
+                    <font-awesome-icon icon="chevron-left" class="text-primary cursor-pointer mt-5" @click="(this.startPhotos > 0 ? changeGaleryPage(this.startPhotos - 1) : '')" />
                 </div>
                 <div class="w-100 mx-3">
                     <div class="row" id="images">
                         <template v-for="(photo, index) in photos" v-bind:key="index">
                             <div class="col-12 col-md-3 d-md-block" :class="index != this.startPhotos ? 'd-none' : ''" v-if="index >= this.startPhotos && index <= this.startPhotos + 3">
-                                <img class="mb-3 w-100 shadow rounded-3 cursor-pointer" :src="photo" style="height: 150px; object-fit: cover;">
+                                <img class="mb-3 w-100 shadow rounded-3 cursor-pointer" :src="photo.image" style="height: 150px; object-fit: cover;">
                             </div>
                         </template>
                     </div>
                 </div>
                 <div class="w-1 pt-3">
-                    <font-awesome-icon icon="chevron-right" class="text-primary cursor-pointer mt-5" @click="(this.startPhotos < this.photos.length - 1 ? this.startPhotos++ : '')" />
+                    <font-awesome-icon icon="chevron-right" class="text-primary cursor-pointer mt-5" @click="(this.startPhotos < this.photos.length - 1 ? changeGaleryPage(this.startPhotos + 1) : '')" />
                 </div>
             </div>
         </div>
@@ -179,14 +179,7 @@ export default {
             showUmkm: false,
             baseUrl: process.env.VUE_APP_URL,
             startPhotos: 0,
-            photos: [
-                'https://www.tzuchi.or.id/inliners/201810/foto_1_TZC_6585.JPG',
-                process.env.VUE_APP_URL + 'storage/header-1.jpg',
-                process.env.VUE_APP_URL + 'storage/header-2.jpeg',
-                process.env.VUE_APP_URL + 'storage/header-3.png',
-                process.env.VUE_APP_URL + 'storage/header-4.png',
-                process.env.VUE_APP_URL + 'storage/header-5.png',
-            ],
+            photos: {},
             beritas: [
                 {
                     judul: 'Kuak Potensi Desa Demi Pembangunan di Indonesia',
@@ -215,8 +208,20 @@ export default {
             ],
         }
     },
+    methods: {
+        changeGaleryPage(number) {
+            this.startPhotos = number;
+        },
+    },
     mounted() {
-        new Viewer(document.getElementById('images'));
-    }
+        this.axios.get('galery').then((response) => {
+            if (response.data.data.length > 0) {
+                this.photos = response.data.data;
+                setTimeout(() => {
+                    new Viewer(document.getElementById('images'));
+                }, 10);
+            }
+        });
+    },
 }
 </script>

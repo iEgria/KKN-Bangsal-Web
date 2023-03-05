@@ -20,6 +20,7 @@ import AdminSetting from "@/views/admin/Setting.vue";
 import AdminMasterPengguna from "@/views/admin/master/user/Index.vue";
 import AdminMasterPenggunaForm from "@/views/admin/master/user/Form.vue";
 import AdminSlider from "@/views/admin/slider/Index.vue";
+import AdminGaleri from "@/views/admin/galeri/Index.vue";
 import AdminInformasi from "@/views/admin/informasi/Index.vue";
 import AdminLinkTerkait from "@/views/admin/link_terkait/Index.vue";
 import AdminLinkTerkaitForm from "@/views/admin/link_terkait/Form.vue";
@@ -56,6 +57,8 @@ const routes = [
       { path: '/admin-halaman-terkait-edit/:id', component: AdminLinkTerkaitForm, name: 'admin.halaman-terkait-edit', meta: {middleware: auth} },
 
       { path: '/admin-slider', component: AdminSlider, name: 'admin.slider', meta: {middleware: auth} },
+      { path: '/admin-galeri', component: AdminGaleri, name: 'admin.galeri', meta: {middleware: auth} },
+
       { path: '/admin-informasi', component: AdminInformasi, name: 'admin.informasi', meta: {middleware: auth} },
 
       { path: '/admin-persyaratan-pelayanan', component: AdminMasterPengguna, name: 'admin.data.persyaratan-pelayanan', meta: {middleware: auth} },
