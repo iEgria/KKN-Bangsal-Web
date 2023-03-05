@@ -63,6 +63,14 @@
             </router-link>
         </li>
         <li class="nav-item">
+            <router-link to="/admin-halaman-terkait" class="nav-link border-radius-md">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <font-awesome-icon icon="chevron-right"></font-awesome-icon>
+                </div>
+                <span class="nav-link-text ms-1">Halaman Terkait</span>
+            </router-link>
+        </li>
+        <li class="nav-item">
             <router-link to="/admin-persyaratan-pelayanan" class="nav-link border-radius-md">
                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                     <font-awesome-icon icon="chevron-right"></font-awesome-icon>

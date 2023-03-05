@@ -106,24 +106,9 @@
                     <h6 class="text-gradient text-primary text-sm">Halaman Terkait</h6>
                     <div>
                         <ul class="d-flex flex-row nav">
-                            <li class="nav-item mb-3">
-                                <a href="https://kedirikota.go.id/">
-                                    <img :src="this.baseUrl + 'favicon.png'" class="avatar avatar-xl me-3 shadow-lg" alt="user1">
-                                </a>
-                            </li>
-                            <li class="nav-item mb-3">
-                                <a href="https://disdukcapil.kedirikota.go.id/sakti/">
-                                    <img :src="this.baseUrl + 'favicon.png'" class="avatar avatar-xl me-3 shadow-lg" alt="user1">
-                                </a>
-                            </li>
-                            <li class="nav-item mb-3">
-                                <a href="https://kswi.kedirikota.go.id/">
-                                    <img :src="this.baseUrl + 'favicon.png'" class="avatar avatar-xl me-3 shadow-lg" alt="user1">
-                                </a>
-                            </li>
-                            <li class="nav-item mb-3">
-                                <a href="https://oss.go.id/">
-                                    <img :src="this.baseUrl + 'favicon.png'" class="avatar avatar-xl me-3 shadow-lg" alt="user1">
+                            <li class="nav-item mb-3" v-for="link in relatedLink" v-bind:key="link">
+                                <a :href="link.url">
+                                    <img :src="link.logo" class="avatar avatar-xl me-3 shadow-lg" :alt="link.title">
                                 </a>
                             </li>
                         </ul>
@@ -175,8 +160,9 @@ export default {
         return {
             baseUrl: process.env.VUE_APP_URL,
             information: {},
-            selectedHeader: 0,
             slider: [{ 'image': '' }],
+            relatedLink: {},
+            selectedHeader: 0,
             showPelayanan: false,
             pelayanans: [
                 {
@@ -266,7 +252,9 @@ export default {
         this.axios.get('information').then((response) => {
             this.information = response.data.data;
         });
-
+        this.axios.get('related_link').then((response) => {
+            this.relatedLink = response.data.data;
+        });
     }
 }
 </script>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GeneralInformationsController;
+use App\Http\Controllers\RelatedLinksController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SlidersController;
 use App\Http\Controllers\UserController;
@@ -25,6 +26,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('slider', [SlidersController::class, 'index']);
 Route::get('information', [GeneralInformationsController::class, 'index']);
+Route::get('related_link', [RelatedLinksController::class, 'index']);
 Route::post('auth/login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
@@ -42,4 +44,5 @@ Route::middleware('auth:sanctum')->group(function () {
     });
     Route::resource('slider', SlidersController::class)->only(['store', 'destroy']);
     Route::resource('information', GeneralInformationsController::class)->only(['store']);
+    Route::resource('related_link', RelatedLinksController::class)->except(['index']);
 });

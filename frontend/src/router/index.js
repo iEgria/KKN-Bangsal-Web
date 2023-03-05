@@ -21,6 +21,8 @@ import AdminMasterPengguna from "@/views/admin/master/user/Index.vue";
 import AdminMasterPenggunaForm from "@/views/admin/master/user/Form.vue";
 import AdminSlider from "@/views/admin/slider/Index.vue";
 import AdminInformasi from "@/views/admin/informasi/Index.vue";
+import AdminLinkTerkait from "@/views/admin/link_terkait/Index.vue";
+import AdminLinkTerkaitForm from "@/views/admin/link_terkait/Form.vue";
 
 
 const routes = [
@@ -48,6 +50,10 @@ const routes = [
       { path: '/admin-master-pengguna', component: AdminMasterPengguna, name: 'admin.master.pengguna', meta: {middleware: auth} },
       { path: '/admin-master-pengguna-create', component: AdminMasterPenggunaForm, name: 'admin.master.pengguna-create', meta: {middleware: auth} },
       { path: '/admin-master-pengguna-edit/:id', component: AdminMasterPenggunaForm, name: 'admin.master.pengguna-edit', meta: {middleware: auth} },
+
+      { path: '/admin-halaman-terkait', component: AdminLinkTerkait, name: 'admin.halaman-terkait', meta: {middleware: auth} },
+      { path: '/admin-halaman-terkait-create', component: AdminLinkTerkaitForm, name: 'admin.halaman-terkait-create', meta: {middleware: auth} },
+      { path: '/admin-halaman-terkait-edit/:id', component: AdminLinkTerkaitForm, name: 'admin.halaman-terkait-edit', meta: {middleware: auth} },
 
       { path: '/admin-slider', component: AdminSlider, name: 'admin.slider', meta: {middleware: auth} },
       { path: '/admin-informasi', component: AdminInformasi, name: 'admin.informasi', meta: {middleware: auth} },
@@ -86,6 +92,5 @@ router.beforeEach((to, from, next) => {
 
   return next();
 });
-
 
 export default router;
