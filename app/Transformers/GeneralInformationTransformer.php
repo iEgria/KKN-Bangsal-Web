@@ -23,10 +23,9 @@ class GeneralInformationTransformer extends TransformerAbstract
     {
         return [
             'id'         => (int) $model->id,
-
-            /* place your other model properties here */
-
-            'created_at' => $model->created_at,
+            'email'      => $model->email,
+            'phone'      => $model->phone,
+            'instagram'  => $model->instagram,
             'updated_at' => $model->updated_at
         ];
     }

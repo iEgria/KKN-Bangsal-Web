@@ -20,6 +20,7 @@ import AdminSetting from "@/views/admin/Setting.vue";
 import AdminMasterPengguna from "@/views/admin/master/user/Index.vue";
 import AdminMasterPenggunaForm from "@/views/admin/master/user/Form.vue";
 import AdminSlider from "@/views/admin/slider/Index.vue";
+import AdminInformasi from "@/views/admin/informasi/Index.vue";
 
 
 const routes = [
@@ -49,6 +50,7 @@ const routes = [
       { path: '/admin-master-pengguna-edit/:id', component: AdminMasterPenggunaForm, name: 'admin.master.pengguna-edit', meta: {middleware: auth} },
 
       { path: '/admin-slider', component: AdminSlider, name: 'admin.slider', meta: {middleware: auth} },
+      { path: '/admin-informasi', component: AdminInformasi, name: 'admin.informasi', meta: {middleware: auth} },
 
       { path: '/admin-persyaratan-pelayanan', component: AdminMasterPengguna, name: 'admin.data.persyaratan-pelayanan', meta: {middleware: auth} },
       { path: '/admin-persyaratan-pelayanan-create', component: AdminMasterPenggunaForm, name: 'admin.data.persyaratan-pelayanan-create', meta: {middleware: auth} },

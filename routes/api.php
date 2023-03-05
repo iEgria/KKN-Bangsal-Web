@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GeneralInformationsController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SlidersController;
 use App\Http\Controllers\UserController;
@@ -23,9 +24,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('slider', [SlidersController::class, 'index']);
+Route::get('information', [GeneralInformationsController::class, 'index']);
 Route::post('auth/login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::prefix('auth')->controller(AuthController::class)->group(function () {
+        Route::post('logout', [AuthController::class, 'logout']);
+        Route::post('checkSession', [AuthController::class, 'checkSession']);
+        Route::post('changePassword', [AuthController::class, 'changePassword']);
+        Route::post('updateProfile', [AuthController::class, 'updateProfile']);
+    });
     Route::prefix('master')->group(function () {
         Route::get('role', [RoleController::class, 'index']);
         Route::post('user/resetPassword', [UserController::class, 'resetPassword']);
@@ -33,10 +41,5 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::resource('user', UserController::class);
     });
     Route::resource('slider', SlidersController::class)->only(['store', 'destroy']);
-    Route::prefix('auth')->controller(AuthController::class)->group(function () {
-        Route::post('logout', [AuthController::class, 'logout']);
-        Route::post('checkSession', [AuthController::class, 'checkSession']);
-        Route::post('changePassword', [AuthController::class, 'changePassword']);
-        Route::post('updateProfile', [AuthController::class, 'updateProfile']);
-    });
+    Route::resource('information', GeneralInformationsController::class)->only(['store']);
 });

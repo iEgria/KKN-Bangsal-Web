@@ -66,7 +66,7 @@
                         <p class="lead mb-4 text-white opacity-8">
                             <small>
                                 <font-awesome-icon icon="location-dot"></font-awesome-icon> Kec Pesantren, Kota Kediri
-                                <font-awesome-icon icon="phone" class="ps-3"></font-awesome-icon> {{ this.phone }}
+                                <font-awesome-icon icon="phone" class="ps-3"></font-awesome-icon> {{ this.information.email }}
                             </small>
                         </p>
                         <a href="#content" class="btn bg-white text-dark mb-2 mt-5">Jelajahi</a>
@@ -133,21 +133,21 @@
                     <h6 class="text-gradient text-primary text-sm">Hubungi Kami</h6>
                     <ul class="flex-column ms-n3 nav">
                         <li class="nav-item">
-                            <a class="nav-link" :href="'mailto:' + this.email" target="_blank">
+                            <a class="nav-link" :href="'mailto:' + this.information.email" target="_blank">
                                 <font-awesome-icon icon="envelope" class="me-2"></font-awesome-icon>
-                                {{ this.email }}
+                                {{ this.information.email }}
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" :href="'tel:' + this.phone" target="_blank">
+                            <a class="nav-link" :href="'tel:' + this.information.phone" target="_blank">
                                 <font-awesome-icon icon="phone" class="me-2"></font-awesome-icon>
-                                {{ this.phone }}
+                                {{ this.information.phone }}
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="https://instagram.com/kelurahan_bangsal" target="_blank">
                                 <font-awesome-icon icon="fa-brands fa-instagram" class="me-2"></font-awesome-icon>
-                                @kelurahan_bangsal
+                                {{ this.information.instagram }}
                             </a>
                         </li>
                     </ul>
@@ -174,88 +174,78 @@ export default {
     data() {
         return {
             baseUrl: process.env.VUE_APP_URL,
-            phone: "(0354) 699797",
-            email: "pelayanan.kel.bangsal@gmail.com",
+            information: {},
             selectedHeader: 0,
-            slider: [
-                { 'image': '' }
-            ]
+            slider: [{ 'image': '' }],
+            showPelayanan: false,
+            pelayanans: [
+                {
+                    key: 'kk-hilang',
+                    value: 'KK Hilang'
+                },
+                {
+                    key: 'kk-perubahan',
+                    value: 'KK Perubahan'
+                },
+                {
+                    key: 'ktp-hilang',
+                    value: 'KTP Hilang'
+                },
+                {
+                    key: 'ktp-baru',
+                    value: 'KTP Baru'
+                },
+                {
+                    key: 'surat-keterangan-tidak-mampu',
+                    value: 'Surat Keterangan Tidak Mampu'
+                },
+                {
+                    key: 'surat-keterangan-usaha',
+                    value: 'Surat Keterangan Usaha'
+                },
+                {
+                    key: 'surat-domisili-perusahaan',
+                    value: 'Surat Domisili Perusahaan'
+                },
+                {
+                    key: 'surat-domisili-perorangan',
+                    value: 'Surat Domisili Perorangan'
+                },
+                {
+                    key: 'surat-boro-berpergian',
+                    value: 'Surat Boro / Berpergian'
+                },
+                {
+                    key: 'skck',
+                    value: 'SKCK'
+                },
+                {
+                    key: 'akta-kelahiran',
+                    value: 'Akta Kelahiran'
+                },
+                {
+                    key: 'akta-kematian',
+                    value: 'Akta Kematian'
+                },
+                {
+                    key: 'pindah-masuk',
+                    value: 'Pindah Masuk'
+                },
+                {
+                    key: 'pindah-keluar',
+                    value: 'Pindah Keluar'
+                },
+                {
+                    key: 'santunan-kematian',
+                    value: 'Santunan Kematian'
+                },
+                {
+                    key: 'pengajuan-bansos-dtks',
+                    value: 'Pengajuan Bansos & DTKS'
+                }
+            ],
         }
     },
-    header: [
-        process.env.VUE_APP_URL + 'storage/header-1.jpg',
-        process.env.VUE_APP_URL + 'storage/header-2.jpeg',
-        process.env.VUE_APP_URL + 'storage/header-3.png',
-        process.env.VUE_APP_URL + 'storage/header-4.png',
-        process.env.VUE_APP_URL + 'storage/header-5.png',
-    ],
-    showPelayanan: false,
-    pelayanans: [
-        {
-            key: 'kk-hilang',
-            value: 'KK Hilang'
-        },
-        {
-            key: 'kk-perubahan',
-            value: 'KK Perubahan'
-        },
-        {
-            key: 'ktp-hilang',
-            value: 'KTP Hilang'
-        },
-        {
-            key: 'ktp-baru',
-            value: 'KTP Baru'
-        },
-        {
-            key: 'surat-keterangan-tidak-mampu',
-            value: 'Surat Keterangan Tidak Mampu'
-        },
-        {
-            key: 'surat-keterangan-usaha',
-            value: 'Surat Keterangan Usaha'
-        },
-        {
-            key: 'surat-domisili-perusahaan',
-            value: 'Surat Domisili Perusahaan'
-        },
-        {
-            key: 'surat-domisili-perorangan',
-            value: 'Surat Domisili Perorangan'
-        },
-        {
-            key: 'surat-boro-berpergian',
-            value: 'Surat Boro / Berpergian'
-        },
-        {
-            key: 'skck',
-            value: 'SKCK'
-        },
-        {
-            key: 'akta-kelahiran',
-            value: 'Akta Kelahiran'
-        },
-        {
-            key: 'akta-kematian',
-            value: 'Akta Kematian'
-        },
-        {
-            key: 'pindah-masuk',
-            value: 'Pindah Masuk'
-        },
-        {
-            key: 'pindah-keluar',
-            value: 'Pindah Keluar'
-        },
-        {
-            key: 'santunan-kematian',
-            value: 'Santunan Kematian'
-        },
-        {
-            key: 'pengajuan-bansos-dtks',
-            value: 'Pengajuan Bansos & DTKS'
-        }
-    ],
     mounted() {
         const sidenav_show = document.querySelector(".g-sidenav-show");
         sidenav_show.classList.remove("g-sidenav-show");
@@ -269,7 +259,12 @@ export default {
         }, 10000);
 
         this.axios.get('slider').then((response) => {
-            this.slider = response.data.data;
+            if (response.data.data.length > 0) {
+                this.slider = response.data.data;
+            }
+        });
+        this.axios.get('information').then((response) => {
+            this.information = response.data.data;
         });
 
     }

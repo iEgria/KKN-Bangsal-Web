@@ -20,6 +20,6 @@ class GeneralInformation extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = [];
-
+    protected $table = 'general_information';
+    protected $fillable = ['email', 'phone', 'instagram'];
 }

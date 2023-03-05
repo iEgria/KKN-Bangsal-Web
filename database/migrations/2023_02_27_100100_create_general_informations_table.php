@@ -13,7 +13,7 @@ return new class extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('general_informations', function (Blueprint $table) {
+		Schema::create('general_information', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('email');
 			$table->string('phone');
@@ -29,6 +29,6 @@ return new class extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('general_informations');
+		Schema::drop('general_information');
 	}
 };
