@@ -6,6 +6,7 @@ use App\Http\Controllers\GeneralInformationsController;
 use App\Http\Controllers\RelatedLinksController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RtRwsController;
+use App\Http\Controllers\SejarahDesasController;
 use App\Http\Controllers\SlidersController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -29,6 +30,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('slider', [SlidersController::class, 'index']);
 Route::get('galery', [GaleriesController::class, 'index']);
 Route::get('information', [GeneralInformationsController::class, 'index']);
+Route::get('sejarah_desa', [SejarahDesasController::class, 'index']);
 Route::get('related_link', [RelatedLinksController::class, 'index']);
 Route::get('rt_rw', [RtRwsController::class, 'index']);
 Route::post('auth/login', [AuthController::class, 'login']);
@@ -49,6 +51,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('slider', SlidersController::class)->only(['store', 'destroy']);
     Route::resource('galery', GaleriesController::class)->only(['store', 'destroy']);
     Route::resource('information', GeneralInformationsController::class)->only(['store']);
+    Route::resource('sejarah_desa', SejarahDesasController::class)->only(['store']);
     Route::resource('related_link', RelatedLinksController::class)->except(['index']);
     Route::resource('rt_rw', RtRwsController::class)->except(['index']);
 });

@@ -6,6 +6,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import ArgonDashboard from "./argon-dashboard";
 import Sweetalert2 from 'vue-sweetalert2';
+import CKEditor from '@ckeditor/ckeditor5-vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faEye, faEyeSlash, faHeart, faUser, faCog, faSignOut, faPencil, faTrash, faHome, faRefresh, faEnvelope, faAngleDown, faLocationDot, faPhone, faMars, faVenus, faChevronLeft, faChevronRight, faAdd } from "@fortawesome/free-solid-svg-icons";
@@ -43,6 +44,7 @@ appInstance.use(Sweetalert2, {
     },
     buttonsStyling: !1,
 });
+appInstance.use(CKEditor);
 appInstance.use(ArgonDashboard);
 appInstance.component('font-awesome-icon', FontAwesomeIcon);
 

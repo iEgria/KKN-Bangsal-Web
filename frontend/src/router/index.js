@@ -24,6 +24,7 @@ import AdminRtRwForm from "@/views/admin/rt_rw/Form.vue";
 import AdminSlider from "@/views/admin/slider/Index.vue";
 import AdminGaleri from "@/views/admin/galeri/Index.vue";
 import AdminInformasi from "@/views/admin/informasi/Index.vue";
+import AdminSejarahDesa from "@/views/admin/sejarah_desa/Index.vue";
 import AdminLinkTerkait from "@/views/admin/link_terkait/Index.vue";
 import AdminLinkTerkaitForm from "@/views/admin/link_terkait/Form.vue";
 
@@ -67,6 +68,7 @@ const routes = [
       { path: '/admin-galeri', component: AdminGaleri, name: 'admin.galeri', meta: {middleware: auth} },
 
       { path: '/admin-informasi', component: AdminInformasi, name: 'admin.informasi', meta: {middleware: auth} },
+      { path: '/admin-sejarah-desa', component: AdminSejarahDesa, name: 'admin.sejarah-desa', meta: {middleware: auth} },
 
       { path: '/admin-persyaratan-pelayanan', component: AdminMasterPengguna, name: 'admin.data.persyaratan-pelayanan', meta: {middleware: auth} },
       { path: '/admin-persyaratan-pelayanan-create', component: AdminMasterPenggunaForm, name: 'admin.data.persyaratan-pelayanan-create', meta: {middleware: auth} },
