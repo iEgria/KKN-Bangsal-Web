@@ -26,6 +26,8 @@ class GeneralInformationTransformer extends TransformerAbstract
             'email'      => $model->email,
             'phone'      => $model->phone,
             'instagram'  => $model->instagram,
+            'sejarah_desa'  => $model->sejarah_desa,
+            'visi_misi'  => $model->visi_misi,
             'updated_at' => $model->updated_at
         ];
     }

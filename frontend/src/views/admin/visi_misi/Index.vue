@@ -1,7 +1,7 @@
 <template>
     <div class="card card-body shadow">
         <form method="post" @submit.prevent="submit()">
-            <ckeditor :editor="editor" v-model="this.data.sejarah_desa" :config="editorConfig"></ckeditor>
+            <ckeditor :editor="editor" v-model="this.data.visi_misi" :config="editorConfig"></ckeditor>
             <div class="d-flex justify-content-end mt-3">
                 <button type="submit" class="btn bg-gradient-success mb-0">Simpan</button>
             </div>
@@ -16,13 +16,16 @@ export default {
     data() {
         return {
             data: {
-                sejarah_desa: ''
+                visi_misi: ''
             },
             roles: {},
             errors: {},
             editor: ClassicEditor,
             editorConfig: {
-                toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|', 'outdent', 'indent', '|', 'blockQuote', 'undo', 'redo'],
+                alignment: {
+                    options: ['left', 'right']
+                },
+                toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|', 'alignment', '|', 'outdent', 'indent', '|', 'blockQuote', 'undo', 'redo'],
             }
         }
     },

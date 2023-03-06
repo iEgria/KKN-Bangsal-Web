@@ -18,7 +18,19 @@ class GeneralInformationValidator extends LaravelValidator
      * @var array
      */
     protected $rules = [
-        ValidatorInterface::RULE_CREATE => [],
-        ValidatorInterface::RULE_UPDATE => [],
+        ValidatorInterface::RULE_CREATE => [
+            'email' => ['required', ['email']],
+            'instagram' => ['required'],
+            'phone' => ['required'],
+            'sejarah_desa' => ['required'],
+            'visi_misi' => ['required'],
+        ],
+        ValidatorInterface::RULE_UPDATE => [
+            'email' => ['required', ['email']],
+            'instagram' => ['required'],
+            'phone' => ['required'],
+            'sejarah_desa' => ['required'],
+            'visi_misi' => ['required'],
+        ],
     ];
 }

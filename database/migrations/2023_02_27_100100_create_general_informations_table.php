@@ -18,6 +18,8 @@ return new class extends Migration
 			$table->string('email');
 			$table->string('phone');
 			$table->string('instagram');
+			$table->longText('sejarah_desa');
+			$table->longText('visi_misi');
 			$table->timestamps();
 		});
 	}

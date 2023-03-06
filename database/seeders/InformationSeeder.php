@@ -16,7 +16,9 @@ class InformationSeeder extends Seeder
         GeneralInformation::create([
             'email' => 'pelayanan.kel.bangsal@gmail.com',
             'phone' => '(0354) 699797',
-            'instagram' => 'kelurahan_bangsal'
+            'instagram' => 'kelurahan_bangsal',
+            'sejarah_desa' => 'Nama bangsal yang berarti Tempat Peristirahatan diambil dari sejarah ketika masa peperangan dimana tempat yang sekarang menjadi kelurahan bangal ini digunakan sebagai tempat peristirahatan oleh pasukan pangeran Diponegoro yang sedang berperang dari Jawa Barat ke Jawa Timur.',
+            'visi_misi' => '-',
         ]);
     }
 }

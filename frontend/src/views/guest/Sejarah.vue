@@ -14,7 +14,7 @@ export default {
         }
     },
     mounted() {
-        this.axios.get('sejarah_desa').then((response) => {
+        this.axios.get('information').then((response) => {
             if (response.data.data) {
                 this.data.sejarah_desa = response.data.data.sejarah_desa;
             }

@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             InformationSeeder::class,
             RelatedLinkSeeder::class,
-            SejarahDesaSeeder::class
         ]);
     }
 }
