@@ -27,9 +27,8 @@ class RtRwsController extends Controller
     {
         $this->RtRw->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
         return response()->json(
-            $this->RtRw->whereHas('rt', function ($query) {
-                $query->whereNotNull('rt_number');
-            })->get()
+            $this->RtRw->whereHas('rw', function ($query) {
+            })->orderBy('rw_number')->orderBy('rt_number')->get()
         );
     }
 
@@ -53,26 +52,11 @@ class RtRwsController extends Controller
 
     public function show($id)
     {
-        $rtRw = $this->RtRw->find($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $rtRw,
-            ]);
-        }
-
-        return view('rtRws.show', compact('rtRw'));
+        return response()->json($this->RtRw->find($id));
     }
 
-    public function edit($id)
-    {
-        $rtRw = $this->RtRw->find($id);
 
-        return view('rtRws.edit', compact('rtRw'));
-    }
-
-    public function update(RtRwUpdateRequest $request, $id)
+    public function update(Request $request, $id)
     {
         try {
 
@@ -80,44 +64,24 @@ class RtRwsController extends Controller
 
             $rtRw = $this->RtRw->update($request->all(), $id);
 
-            $response = [
+            return response()->json([
                 'message' => 'RtRw updated.',
-                'data'    => $rtRw->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
+                'data'    => $rtRw
+            ]);
         } catch (ValidatorException $e) {
-
-            if ($request->wantsJson()) {
-
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
+            return response()->json([
+                'error'   => true,
+                'message' => $e->getMessageBag()
+            ]);
         }
     }
 
 
     public function destroy($id)
     {
-        $deleted = $this->RtRw->delete($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'message' => 'RtRw deleted.',
-                'deleted' => $deleted,
-            ]);
-        }
-
-        return redirect()->back()->with('message', 'RtRw deleted.');
+        return response()->json([
+            'message' => 'RtRw deleted.',
+            'deleted' => $this->RtRw->delete($id)
+        ]);
     }
 }

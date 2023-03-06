@@ -28,4 +28,9 @@ class RtRw extends Model implements Transformable
     {
         return $this->hasMany(RtRw::class);
     }
+
+    public function rw()
+    {
+        return $this->hasOne(RtRw::class, 'rw_number', 'rw_number');
+    }
 }

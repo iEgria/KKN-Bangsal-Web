@@ -21,11 +21,13 @@ class RtRwValidator extends LaravelValidator
         ValidatorInterface::RULE_CREATE => [
             'rt_number' => ['integer'],
             'rw_number' => ['integer'],
+            'rt_rw_id' => ['exists:rt_rw,id'],
             'nama' => ['required', 'string']
         ],
         ValidatorInterface::RULE_UPDATE => [
             'rt_number' => ['integer'],
             'rw_number' => ['integer'],
+            'rt_rw_id' => ['exists:rt_rw,id'],
             'nama' => ['required', 'string']
         ],
     ];
