@@ -16,9 +16,8 @@ use Laravolt\Avatar\Facade as Avatar;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::get('avatar', function (Request $request) {
     return Avatar::create($request->name)->toSvg();
 });
+
+Route::view('/{any}', 'app')->where('any', '.*');

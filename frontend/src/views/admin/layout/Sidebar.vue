@@ -28,7 +28,7 @@
             </router-link>
         </li>
         <li class="nav-item">
-            <router-link to="to" class="nav-link border-radius-md">
+            <router-link to="/admin-rt-rw" class="nav-link border-radius-md">
                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                     <font-awesome-icon icon="chevron-right"></font-awesome-icon>
                 </div>

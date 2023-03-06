@@ -19,6 +19,8 @@ import AdminDashboard from "@/views/admin/Dashboard.vue";
 import AdminSetting from "@/views/admin/Setting.vue";
 import AdminMasterPengguna from "@/views/admin/master/user/Index.vue";
 import AdminMasterPenggunaForm from "@/views/admin/master/user/Form.vue";
+import AdminRtRw from "@/views/admin/rt_rw/Index.vue";
+import AdminRtRwForm from "@/views/admin/rt_rw/Form.vue";
 import AdminSlider from "@/views/admin/slider/Index.vue";
 import AdminGaleri from "@/views/admin/galeri/Index.vue";
 import AdminInformasi from "@/views/admin/informasi/Index.vue";
@@ -55,6 +57,11 @@ const routes = [
       { path: '/admin-halaman-terkait', component: AdminLinkTerkait, name: 'admin.halaman-terkait', meta: {middleware: auth} },
       { path: '/admin-halaman-terkait-create', component: AdminLinkTerkaitForm, name: 'admin.halaman-terkait-create', meta: {middleware: auth} },
       { path: '/admin-halaman-terkait-edit/:id', component: AdminLinkTerkaitForm, name: 'admin.halaman-terkait-edit', meta: {middleware: auth} },
+
+      { path: '/admin-rt-rw', component: AdminRtRw, name: 'admin.rt-rw', meta: {middleware: auth} },
+      { path: '/admin-rt-rw-create', component: AdminRtRwForm, name: 'admin.rt-rw-create', meta: {middleware: auth} },
+      { path: '/admin-rt-rw-create/:rw_id', component: AdminRtRwForm, name: 'admin.rt-rw-create-rt', meta: {middleware: auth} },
+      { path: '/admin-rt-rw-edit/:id', component: AdminRtRwForm, name: 'admin.rt-rw-edit', meta: {middleware: auth} },
 
       { path: '/admin-slider', component: AdminSlider, name: 'admin.slider', meta: {middleware: auth} },
       { path: '/admin-galeri', component: AdminGaleri, name: 'admin.galeri', meta: {middleware: auth} },

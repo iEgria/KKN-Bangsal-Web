@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Interfaces\galeryRepository;
+use App\Interfaces\GaleryRepository;
 use App\Entities\Galery;
 use App\Presenters\GaleryPresenter;
 

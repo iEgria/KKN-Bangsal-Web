@@ -11,7 +11,7 @@
             </thead>
             <tbody>
                 <tr v-for="user in this.formData" v-bind:key="user">
-                    <td>{{ user.email }}</td>
+                    <td class="user" :class="true ? user.email : ''">{{ user.email }}</td>
                     <td>{{ user.name }}</td>
                     <td>
                         <span class="badge bg-gradient-primary ms-1" v-for="role in user.roles" v-bind:key="role">{{ role }}</span>

@@ -11,27 +11,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bg-dark text-white">
-                        <td>01</td>
-                        <td></td>
-                        <td>Mukidi</td>
-                    </tr>
-                    <tr>
-                        <td>01</td>
-                        <td>01</td>
-                        <td>Padisi</td>
-                    </tr>
-                    <tr>
-                        <td>01</td>
-                        <td>02</td>
-                        <td>Sumiran</td>
-                    </tr>
-                    <tr>
-                        <td>01</td>
-                        <td>03</td>
-                        <td>Katemi</td>
-                    </tr>
-
+                    <template v-for="rw in this.formData" v-bind:key="rw">
+                        <tr>
+                            <td>{{ rw.rw_number.toString().padStart(2, "0") }}</td>
+                            <td></td>
+                            <td>{{ rw.nama }}</td>
+                        </tr>
+                        <template v-for="rt in rw.rt" v-bind:key="rt">
+                            <tr>
+                                <td></td>
+                                <td>{{ rt.rt_number.toString().padStart(2, "0") }}</td>
+                                <td>{{ rt.nama }}</td>
+                            </tr>
+                        </template>
+                    </template>
                 </tbody>
             </table>
         </div>
@@ -41,5 +34,15 @@
 <script>
 export default {
     name: "RT RW",
+    data() {
+        return {
+            formData: {}
+        }
+    },
+    mounted() {
+        this.axios.get('rt_rw').then((response) => {
+            this.formData = response.data.data;
+        })
+    },
 }
 </script>

@@ -5,6 +5,7 @@ use App\Http\Controllers\GaleriesController;
 use App\Http\Controllers\GeneralInformationsController;
 use App\Http\Controllers\RelatedLinksController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\RtRwsController;
 use App\Http\Controllers\SlidersController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -29,6 +30,7 @@ Route::get('slider', [SlidersController::class, 'index']);
 Route::get('galery', [GaleriesController::class, 'index']);
 Route::get('information', [GeneralInformationsController::class, 'index']);
 Route::get('related_link', [RelatedLinksController::class, 'index']);
+Route::get('rt_rw', [RtRwsController::class, 'index']);
 Route::post('auth/login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
@@ -48,4 +50,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('galery', GaleriesController::class)->only(['store', 'destroy']);
     Route::resource('information', GeneralInformationsController::class)->only(['store']);
     Route::resource('related_link', RelatedLinksController::class)->except(['index']);
+    Route::resource('rt_rw', RtRwsController::class)->except(['index']);
 });
