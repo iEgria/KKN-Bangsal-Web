@@ -28,6 +28,8 @@ import AdminSejarahDesa from "@/views/admin/sejarah_desa/Index.vue";
 import AdminVisiMisi from "@/views/admin/visi_misi/Index.vue";
 import AdminLinkTerkait from "@/views/admin/link_terkait/Index.vue";
 import AdminLinkTerkaitForm from "@/views/admin/link_terkait/Form.vue";
+import AdminPersyaratanPelayanan from "@/views/admin/persyaratan-pelayanan/Index.vue";
+import AdminPersyaratanPelayananForm from "@/views/admin/persyaratan-pelayanan/Form.vue";
 
 
 const routes = [
@@ -72,9 +74,9 @@ const routes = [
       { path: '/admin-sejarah-desa', component: AdminSejarahDesa, name: 'admin.sejarah-desa', meta: {middleware: auth} },
       { path: '/admin-visi-misi', component: AdminVisiMisi, name: 'admin.visi-misi', meta: {middleware: auth} },
 
-      { path: '/admin-persyaratan-pelayanan', component: AdminMasterPengguna, name: 'admin.data.persyaratan-pelayanan', meta: {middleware: auth} },
-      { path: '/admin-persyaratan-pelayanan-create', component: AdminMasterPenggunaForm, name: 'admin.data.persyaratan-pelayanan-create', meta: {middleware: auth} },
-      { path: '/admin-persyaratan-pelayanan-edit/:id', component: AdminMasterPenggunaForm, name: 'admin.data.persyaratan-pelayanan-edit', meta: {middleware: auth} },
+      { path: '/admin-persyaratan-pelayanan', component: AdminPersyaratanPelayanan, name: 'admin.persyaratan-pelayanan', meta: {middleware: auth} },
+      { path: '/admin-persyaratan-pelayanan-create', component: AdminPersyaratanPelayananForm, name: 'admin.persyaratan-pelayanan-create', meta: {middleware: auth} },
+      { path: '/admin-persyaratan-pelayanan-edit/:id', component: AdminPersyaratanPelayananForm, name: 'admin.persyaratan-pelayanan-edit', meta: {middleware: auth} },
     ]
   }
 ];

@@ -39,8 +39,8 @@
                             <font-awesome-icon icon="angle-down" class="ms-2" />
                         </a>
                         <div class="dropdown-menu dropdown-menu-animation p-3" :class="this.showPelayanan ? 'show' : ''" aria-labelledby="dropdownMenuPages8" data-bs-popper="static">
-                            <router-link :to="{ name: 'guest.pelayanan.show', params: { id: pelayanan.key } }" class="dropdown-item border-radius-md" v-for="(pelayanan, index) in this.pelayanans" v-bind:key="index" @click="this.showPelayanan = !this.showPelayanan">
-                                <span class="ps-3">{{ pelayanan.value }}</span>
+                            <router-link :to="{ name: 'guest.pelayanan.show', params: { id: pelayanan.id } }" class="dropdown-item border-radius-md" v-for="pelayanan in this.pelayanans" v-bind:key="pelayanan" @click="this.showPelayanan = !this.showPelayanan">
+                                <span class="ps-3">{{ pelayanan.nama }}</span>
                             </router-link>
                         </div>
                     </li>
@@ -164,72 +164,7 @@ export default {
             relatedLink: {},
             selectedHeader: 0,
             showPelayanan: false,
-            pelayanans: [
-                {
-                    key: 'kk-hilang',
-                    value: 'KK Hilang'
-                },
-                {
-                    key: 'kk-perubahan',
-                    value: 'KK Perubahan'
-                },
-                {
-                    key: 'ktp-hilang',
-                    value: 'KTP Hilang'
-                },
-                {
-                    key: 'ktp-baru',
-                    value: 'KTP Baru'
-                },
-                {
-                    key: 'surat-keterangan-tidak-mampu',
-                    value: 'Surat Keterangan Tidak Mampu'
-                },
-                {
-                    key: 'surat-keterangan-usaha',
-                    value: 'Surat Keterangan Usaha'
-                },
-                {
-                    key: 'surat-domisili-perusahaan',
-                    value: 'Surat Domisili Perusahaan'
-                },
-                {
-                    key: 'surat-domisili-perorangan',
-                    value: 'Surat Domisili Perorangan'
-                },
-                {
-                    key: 'surat-boro-berpergian',
-                    value: 'Surat Boro / Berpergian'
-                },
-                {
-                    key: 'skck',
-                    value: 'SKCK'
-                },
-                {
-                    key: 'akta-kelahiran',
-                    value: 'Akta Kelahiran'
-                },
-                {
-                    key: 'akta-kematian',
-                    value: 'Akta Kematian'
-                },
-                {
-                    key: 'pindah-masuk',
-                    value: 'Pindah Masuk'
-                },
-                {
-                    key: 'pindah-keluar',
-                    value: 'Pindah Keluar'
-                },
-                {
-                    key: 'santunan-kematian',
-                    value: 'Santunan Kematian'
-                },
-                {
-                    key: 'pengajuan-bansos-dtks',
-                    value: 'Pengajuan Bansos & DTKS'
-                }
-            ],
+            pelayanans: {},
         }
     },
     mounted() {
@@ -251,6 +186,9 @@ export default {
         });
         this.axios.get('information').then((response) => {
             this.information = response.data.data;
+        });
+        this.axios.get('pelayanan').then((response) => {
+            this.pelayanans = response.data.data;
         });
         this.axios.get('related_link').then((response) => {
             this.relatedLink = response.data.data;

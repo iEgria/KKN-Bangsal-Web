@@ -37,7 +37,6 @@ export default {
     },
     methods: {
         submit() {
-            console.log(this.data);
             this.axios.post('information', this.data).then((response) => {
                 if (!response.data.error) {
                     this.$swal.fire({

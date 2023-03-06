@@ -51,7 +51,6 @@ export default {
         refreshData() {
             this.axios.get('galery').then((response) => {
                 this.formData = response.data.data;
-                console.log(this.formData);
             });
         },
     },
