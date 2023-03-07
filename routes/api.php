@@ -8,6 +8,7 @@ use App\Http\Controllers\RelatedLinksController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RtRwsController;
 use App\Http\Controllers\SlidersController;
+use App\Http\Controllers\StukturOrganisasisController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('slider', [SlidersController::class, 'index']);
 Route::get('galery', [GaleriesController::class, 'index']);
+Route::get('struktur_organisasi', [StukturOrganisasisController::class, 'index']);
 Route::get('information', [GeneralInformationsController::class, 'index']);
 Route::get('related_link', [RelatedLinksController::class, 'index']);
 Route::resource('pelayanan', PelayanansController::class)->only(['index', 'show']);
@@ -50,6 +52,7 @@ Route::middleware('auth:sanctum')->group(function () {
     });
     Route::resource('slider', SlidersController::class)->only(['store', 'destroy']);
     Route::resource('galery', GaleriesController::class)->only(['store', 'destroy']);
+    Route::resource('struktur_organisasi', StukturOrganisasisController::class)->only(['store', 'destroy']);
     Route::resource('information', GeneralInformationsController::class)->only(['store']);
     Route::resource('related_link', RelatedLinksController::class)->except(['index']);
     Route::resource('pelayanan', PelayanansController::class)->except(['index', 'show']);

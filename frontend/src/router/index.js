@@ -23,6 +23,7 @@ import AdminRtRw from "@/views/admin/rt_rw/Index.vue";
 import AdminRtRwForm from "@/views/admin/rt_rw/Form.vue";
 import AdminSlider from "@/views/admin/slider/Index.vue";
 import AdminGaleri from "@/views/admin/galeri/Index.vue";
+import AdminStrukturOrganisasi from "@/views/admin/struktur_organisasi/Index.vue";
 import AdminInformasi from "@/views/admin/informasi/Index.vue";
 import AdminSejarahDesa from "@/views/admin/sejarah_desa/Index.vue";
 import AdminVisiMisi from "@/views/admin/visi_misi/Index.vue";
@@ -68,6 +69,7 @@ const routes = [
       { path: '/admin-rt-rw-edit/:id', component: AdminRtRwForm, name: 'admin.rt-rw-edit', meta: {middleware: auth} },
 
       { path: '/admin-slider', component: AdminSlider, name: 'admin.slider', meta: {middleware: auth} },
+      { path: '/admin-struktur-organisasi', component: AdminStrukturOrganisasi, name: 'admin.struktur-organisasi', meta: {middleware: auth} },
       { path: '/admin-galeri', component: AdminGaleri, name: 'admin.galeri', meta: {middleware: auth} },
 
       { path: '/admin-informasi', component: AdminInformasi, name: 'admin.informasi', meta: {middleware: auth} },
