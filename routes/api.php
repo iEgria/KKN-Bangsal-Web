@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BeritasController;
 use App\Http\Controllers\GaleriesController;
 use App\Http\Controllers\GeneralInformationsController;
 use App\Http\Controllers\PelayanansController;
@@ -33,6 +34,7 @@ Route::get('galery', [GaleriesController::class, 'index']);
 Route::get('struktur_organisasi', [StukturOrganisasisController::class, 'index']);
 Route::get('information', [GeneralInformationsController::class, 'index']);
 Route::get('related_link', [RelatedLinksController::class, 'index']);
+Route::resource('berita', BeritasController::class)->only(['index', 'show']);
 Route::resource('pelayanan', PelayanansController::class)->only(['index', 'show']);
 Route::get('rt_rw', [RtRwsController::class, 'index']);
 Route::post('auth/login', [AuthController::class, 'login']);
@@ -55,6 +57,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('struktur_organisasi', StukturOrganisasisController::class)->only(['store', 'destroy']);
     Route::resource('information', GeneralInformationsController::class)->only(['store']);
     Route::resource('related_link', RelatedLinksController::class)->except(['index']);
+    Route::resource('berita', BeritasController::class)->except(['index', 'show']);
     Route::resource('pelayanan', PelayanansController::class)->except(['index', 'show']);
     Route::resource('rt_rw', RtRwsController::class)->except(['index']);
 });

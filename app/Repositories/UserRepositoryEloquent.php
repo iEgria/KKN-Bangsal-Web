@@ -18,10 +18,10 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
         return User::class;
     }
 
-    public function validator()
-    {
-        return UserValidator::class;
-    }
+    // public function validator()
+    // {
+    //     return UserValidator::class;
+    // }
 
     public function boot()
     {
@@ -35,6 +35,7 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
 
     public function create($attribute)
     {
+        $attribute['password'] = Hash::make($attribute['password']);
         $user = parent::create($attribute);
         return User::find($user['data']['id'])->syncRoles($attribute['roles']);
     }

@@ -29,6 +29,8 @@ import AdminSejarahDesa from "@/views/admin/sejarah_desa/Index.vue";
 import AdminVisiMisi from "@/views/admin/visi_misi/Index.vue";
 import AdminLinkTerkait from "@/views/admin/link_terkait/Index.vue";
 import AdminLinkTerkaitForm from "@/views/admin/link_terkait/Form.vue";
+import AdminBerita from "@/views/admin/berita/Index.vue";
+import AdminBeritaForm from "@/views/admin/berita/Form.vue";
 import AdminPersyaratanPelayanan from "@/views/admin/persyaratan-pelayanan/Index.vue";
 import AdminPersyaratanPelayananForm from "@/views/admin/persyaratan-pelayanan/Form.vue";
 
@@ -62,6 +64,10 @@ const routes = [
       { path: '/admin-halaman-terkait', component: AdminLinkTerkait, name: 'admin.halaman-terkait', meta: {middleware: auth} },
       { path: '/admin-halaman-terkait-create', component: AdminLinkTerkaitForm, name: 'admin.halaman-terkait-create', meta: {middleware: auth} },
       { path: '/admin-halaman-terkait-edit/:id', component: AdminLinkTerkaitForm, name: 'admin.halaman-terkait-edit', meta: {middleware: auth} },
+
+      { path: '/admin-berita', component: AdminBerita, name: 'admin.berita', meta: {middleware: auth} },
+      { path: '/admin-berita-create', component: AdminBeritaForm, name: 'admin.berita-create', meta: {middleware: auth} },
+      { path: '/admin-berita-edit/:id', component: AdminBeritaForm, name: 'admin.berita-edit', meta: {middleware: auth} },
 
       { path: '/admin-rt-rw', component: AdminRtRw, name: 'admin.rt-rw', meta: {middleware: auth} },
       { path: '/admin-rt-rw-create', component: AdminRtRwForm, name: 'admin.rt-rw-create', meta: {middleware: auth} },
