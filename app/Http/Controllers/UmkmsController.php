@@ -23,7 +23,6 @@ class UmkmsController extends Controller
 
     public function index()
     {
-        dd($this->Umkm->all());
         $this->Umkm->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
 
         return response()->json($this->Umkm->all());
@@ -32,20 +31,18 @@ class UmkmsController extends Controller
     public function store(Request $request)
     {
 
-        return ($request->all());
         try {
-            // $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
-            $Umk = $request->all();
+            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
+            $Umkm = $request->all();
             if ($request->hasFile('photo')) {
-                $Umk['photo'] = str_replace('public/', '', $request->file('photo')->store('public/umkm'));
+                $Umkm['photo'] = str_replace('public/', '', $request->file('photo')->store('public/umkm'));
             }
-            return $Umk;
-            // $Umkm = $this->Umkm->create($request->all());
+            $Umkm = $this->Umkm->create($Umkm);
 
-            // return response()->json([
-            //     'message' => 'Related Link created.',
-            //     'data'    => $request->all(),
-            // ]);
+            return response()->json([
+                'message' => 'Related Link created.',
+                'data'    => $request->all(),
+            ]);
         } catch (ValidatorException $e) {
             return response()->json([
                 'error'   => true,
@@ -68,6 +65,7 @@ class UmkmsController extends Controller
 
     public function update(Request $request, $id)
     {
+        return response()->json($request->all(), 500);
         try {
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
             $Umkm = $request->all();

@@ -51,7 +51,7 @@ export default {
         },
         submit() {
             if (this.$route.params.id) {
-                this.axios.put('umkm/' + this.$route.params.id, this.data).then((response) => {
+                this.axios.put('umkm/' + this.$route.params.id, this.data, { headers: { 'Content-Type': 'multipart/form-data' } }).then((response) => {
                     if (!response.data.error) {
                         this.$router.push({ name: 'admin.umkm' });
                     } else {
@@ -71,11 +71,8 @@ export default {
     },
     mounted() {
         if (this.$route.params.id) {
-            this.axios.get('related_link/' + this.$route.params.id).then((response) => {
-                this.data = {
-                    title: response.data.data.title,
-                    url: response.data.data.url,
-                }
+            this.axios.get('umkm/' + this.$route.params.id).then((response) => {
+                this.data = response.data.data;
             });
         }
     }

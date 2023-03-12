@@ -21,6 +21,6 @@ class Umkm extends Model implements Transformable
      *
      * @var array
      */
-    protected $table = ['umkm'];
+    protected $table = 'umkm';
     protected $fillable = ['pemilik', 'usaha', 'alamat', 'no_telp', 'photo'];
 }

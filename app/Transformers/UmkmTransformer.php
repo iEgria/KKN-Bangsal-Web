@@ -22,10 +22,12 @@ class UmkmTransformer extends TransformerAbstract
     public function transform(Umkm $model)
     {
         return [
-            'id'         => (int) $model->id,
-
-            /* place your other model properties here */
-
+            'id' => $model->id,
+            'photo' => asset($model->photo),
+            'pemilik' => $model->pemilik,
+            'usaha' => $model->usaha,
+            'alamat' => $model->alamat,
+            'no_telp' => $model->no_telp,
             'created_at' => $model->created_at,
             'updated_at' => $model->updated_at
         ];

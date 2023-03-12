@@ -3,7 +3,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <td width="1px">Pemilik</td>
+                    <td>Pemilik</td>
                     <td>Usaha</td>
                     <td>No. Telp</td>
                     <td>Alamat</td>
@@ -11,16 +11,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="relatedLink in this.formData" v-bind:key="relatedLink">
-                    <td> <img :src="relatedLink.logo" :alt="relatedLink.title" style="width: 20px;" class="me-2"> {{ relatedLink.title }} </td>
-                    <td>{{ relatedLink.url }}</td>
-                    <td>{{ relatedLink.url }}</td>
-                    <td>{{ relatedLink.url }}</td>
+                <tr v-for="Umkm in this.formData" v-bind:key="Umkm">
+                    <td> <img :src="Umkm.photo" :alt="Umkm.usaha" style="width: 20px;" class="me-2"> {{ Umkm.pemilik }} </td>
+                    <td>{{ Umkm.usaha }}</td>
+                    <td>{{ Umkm.no_telp }}</td>
+                    <td>{{ Umkm.alamat }}</td>
                     <td>
-                        <router-link :to="{ name: 'admin.umkm-edit', params: { id: relatedLink.id } }" class="btn btn-sm px-3 bg-gradient-warning ms-1 mb-0 text-white">
+                        <router-link :to="{ name: 'admin.umkm-edit', params: { id: Umkm.id } }" class="btn btn-sm px-3 bg-gradient-warning ms-1 mb-0 text-white">
                             <font-awesome-icon icon="pencil"></font-awesome-icon>
                         </router-link>
-                        <owl-delete-button class="btn btn-sm px-3 bg-gradient-danger ms-1 mb-0" :url="'related_link/' + relatedLink.id" redirectUrl="admin.umkm">
+                        <owl-delete-button class="btn btn-sm px-3 bg-gradient-danger ms-1 mb-0" :url="'related_link/' + Umkm.id" redirectUrl="admin.umkm">
                             <font-awesome-icon icon="trash"></font-awesome-icon>
                         </owl-delete-button>
                     </td>
