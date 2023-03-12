@@ -202,7 +202,7 @@ export default {
                 }, 100);
             }
         });
-        this.axios.get('berita').then((response) => {
+        this.axios.get('berita?limit=4').then((response) => {
             this.beritas = response.data.data;
         });
         this.axios.get('information').then((response) => {

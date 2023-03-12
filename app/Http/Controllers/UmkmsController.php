@@ -25,7 +25,7 @@ class UmkmsController extends Controller
     {
         $this->Umkm->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
 
-        return response()->json($this->Umkm->all());
+        return response()->json($this->Umkm->paginate(1));
     }
 
     public function store(Request $request)
@@ -65,7 +65,6 @@ class UmkmsController extends Controller
 
     public function update(Request $request, $id)
     {
-        return response()->json($request->all(), 500);
         try {
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
             $Umkm = $request->all();

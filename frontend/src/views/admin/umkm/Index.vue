@@ -13,9 +13,9 @@
             <tbody>
                 <tr v-for="Umkm in this.formData" v-bind:key="Umkm">
                     <td> <img :src="Umkm.photo" :alt="Umkm.usaha" style="width: 20px;" class="me-2"> {{ Umkm.pemilik }} </td>
-                    <td>{{ Umkm.usaha }}</td>
-                    <td>{{ Umkm.no_telp }}</td>
-                    <td>{{ Umkm.alamat }}</td>
+                    <td class="text-wrap">{{ Umkm.usaha }}</td>
+                    <td class="text-wrap">{{ Umkm.no_telp }}</td>
+                    <td class="text-wrap">{{ Umkm.alamat }}</td>
                     <td>
                         <router-link :to="{ name: 'admin.umkm-edit', params: { id: Umkm.id } }" class="btn btn-sm px-3 bg-gradient-warning ms-1 mb-0 text-white">
                             <font-awesome-icon icon="pencil"></font-awesome-icon>

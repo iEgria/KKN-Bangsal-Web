@@ -51,7 +51,7 @@ export default {
         },
         submit() {
             if (this.$route.params.id) {
-                this.axios.put('umkm/' + this.$route.params.id, this.data, { headers: { 'Content-Type': 'multipart/form-data' } }).then((response) => {
+                this.axios.post('umkm/' + this.$route.params.id, this.data, { headers: { 'Content-Type': 'multipart/form-data' } }).then((response) => {
                     if (!response.data.error) {
                         this.$router.push({ name: 'admin.umkm' });
                     } else {
@@ -72,7 +72,11 @@ export default {
     mounted() {
         if (this.$route.params.id) {
             this.axios.get('umkm/' + this.$route.params.id).then((response) => {
-                this.data = response.data.data;
+                this.data.alamat = response.data.data.alamat;
+                this.data.no_telp = response.data.data.no_telp;
+                this.data.pemilik = response.data.data.pemilik;
+                this.data.usaha = response.data.data.usaha;
+                this.data._method = 'put';
             });
         }
     }

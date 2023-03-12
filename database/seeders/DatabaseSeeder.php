@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             InformationSeeder::class,
             RelatedLinkSeeder::class,
             PelayananSeeder::class,
-            RtRwSeeder::class
+            RtRwSeeder::class,
+            // BeritaSeeder::class,
         ]);
     }
 }

@@ -26,7 +26,7 @@ class RelatedLinkTransformer extends TransformerAbstract
             'id'         => $model->id,
             'title'      => $model->title,
             'url'        => $model->url,
-            'logo'       => ($model->logo ? asset('storage/' . $model->logo) : url('favicon.png')),
+            'logo'       => ($model->logo ? asset($model->logo) : url('favicon.png')),
             'created_at' => $model->created_at,
             'updated_at' => $model->updated_at
         ];

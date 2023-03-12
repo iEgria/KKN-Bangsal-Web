@@ -7,10 +7,14 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use App\Interfaces\BeritaRepository;
 use App\Entities\Berita;
 use App\Presenters\BeritaPresenter;
-use App\Validators\BeritaValidator;
 
 class BeritaRepositoryEloquent extends BaseRepository implements BeritaRepository
 {
+    protected $fieldSearchable = [
+        'title' => 'like',
+        'content' => 'like',
+    ];
+
     public function model()
     {
         return Berita::class;

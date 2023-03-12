@@ -9,10 +9,10 @@ import Sweetalert2 from 'vue-sweetalert2';
 import CKEditor from '@ckeditor/ckeditor5-vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
-import { faEye, faEyeSlash, faNewspaper, faBuilding, faUsers, faHeart, faUser, faCog, faSignOut, faPencil, faTrash, faHome, faRefresh, faEnvelope, faAngleDown, faLocationDot, faPhone, faMars, faVenus, faChevronLeft, faChevronRight, faAdd } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faEyeSlash, faNewspaper, faBuilding, faUsers, faHeart, faUser, faCog, faSignOut, faPencil, faTrash, faHome, faRefresh, faEnvelope, faAngleDown, faLocationDot, faPhone, faMars, faVenus, faChevronLeft, faAngleDoubleLeft, faChevronRight,faAngleDoubleRight, faAdd } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-library.add(faInstagram, faEye, faEyeSlash, faNewspaper, faBuilding, faUsers, faHeart, faUser, faCog, faSignOut, faPencil, faTrash, faHome, faRefresh, faEnvelope, faAngleDown, faLocationDot, faPhone, faMars, faVenus, faChevronLeft, faChevronRight, faAdd);
+library.add(faInstagram, faEye, faEyeSlash, faNewspaper, faBuilding, faUsers, faHeart, faUser, faCog, faSignOut, faPencil, faTrash, faHome, faRefresh, faEnvelope, faAngleDown, faLocationDot, faPhone, faMars, faVenus, faChevronLeft, faAngleDoubleLeft, faChevronRight,faAngleDoubleRight, faAdd);
 
 axios.defaults.baseURL = process.env.VUE_APP_API_URL;
 axios.defaults.headers.common = { Authorization: `Bearer ${localStorage.getItem('bearerToken')}`, Accept : 'application/json'};

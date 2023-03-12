@@ -27,7 +27,7 @@ class BeritaTransformer extends TransformerAbstract
             'title' => $model->title,
             'slug' => $model->slug,
             'url' => url('berita/' . $model->slug),
-            'cover' => asset('storage/' . $model->cover),
+            'cover' => asset($model->cover),
             'content' => $model->content,
             'content_short' => substr(strip_tags($model->content), 0, 180),
             'view' => $model->view,

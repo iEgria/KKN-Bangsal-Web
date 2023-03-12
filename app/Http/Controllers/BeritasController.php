@@ -30,6 +30,9 @@ class BeritasController extends Controller
         if ($request->popular) {
             return response()->json($this->Berita->orderBy('view', 'desc')->take(3)->get());
         } else {
+            if ($request->limit) {
+                return response()->json($this->Berita->orderBy('published_at', 'desc')->paginate($request->limit));
+            }
             return response()->json($this->Berita->orderBy('published_at', 'desc')->all());
         }
     }

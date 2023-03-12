@@ -26,7 +26,7 @@ class StukturOrganisasisController extends Controller
     public function index()
     {
         $stuktur = $this->StrukturOrganisasi->orderByDesc('created_at')->first()->toArray();
-        $stuktur['image'] = url('storage/' . $stuktur['image']);
+        $stuktur['image'] = asset($stuktur['image']);
         return response()->json(['data' => $stuktur]);
     }
 

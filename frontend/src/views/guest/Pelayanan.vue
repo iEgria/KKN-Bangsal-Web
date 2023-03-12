@@ -10,13 +10,22 @@ export default {
     name: "Pelayanan",
     data() {
         return {
-            data: {}
+            id: this.$route.params.id,
+            data: {},
+            handle: null
         };
     },
     mounted() {
-        this.axios.get('pelayanan/' + this.$route.params.id).then((response) => {
-            this.data = response.data.data;
-        });
+        this.handle = setInterval(() => {
+            if (this.id != this.$route.params.id) {
+                this.id = this.$route.params.id;
+                this.axios.get('pelayanan/' + this.id).then((response) => {
+                    this.data = response.data.data;
+                });
+            }
+        }, 500);
+    }, unmounted() {
+        clearInterval(this.handle);
     }
 };
 </script>

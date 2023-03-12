@@ -23,7 +23,7 @@ class SliderTransformer extends TransformerAbstract
     {
         return [
             'id'         => $model->id,
-            'image'      => asset('storage/' . $model->image),
+            'image'      => asset($model->image),
             'created_at' => $model->created_at,
             'updated_at' => $model->updated_at
         ];
