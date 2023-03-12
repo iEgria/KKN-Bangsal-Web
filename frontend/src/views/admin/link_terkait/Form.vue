@@ -41,7 +41,7 @@ export default {
         },
         submit() {
             if (this.$route.params.id) {
-                this.axios.put('related_link/' + this.$route.params.id, this.data, { headers: { 'Content-Type': 'multipart/form-data' } }).then((response) => {
+                this.axios.post('related_link/' + this.$route.params.id, this.data, { headers: { 'Content-Type': 'multipart/form-data' } }).then((response) => {
                     if (!response.data.error) {
                         this.$router.push({ name: 'admin.halaman-terkait' });
                     } else {
@@ -65,6 +65,7 @@ export default {
                 this.data = {
                     title: response.data.data.title,
                     url: response.data.data.url,
+                    _method: 'put'
                 }
             });
         }
