@@ -2,22 +2,32 @@
     <div class="card card-body shadow">
         <form method="post" @submit.prevent="submit()">
             <div class="form-group">
-                <label>Nama Halaman</label>
-                <input type="text" name="title" class="form-control" :class="this.errors.title ? 'is-invalid' : ''" v-model="this.data.title">
-                <div class="invalid-feedback"> {{ this.errors.title }}</div>
+                <label>Pemilik</label>
+                <input type="text" name="pemilik" class="form-control" :class="this.errors.pemilik ? 'is-invalid' : ''" v-model="this.data.pemilik">
+                <div class="invalid-feedback"> {{ this.errors.pemilik }}</div>
             </div>
             <div class="form-group">
-                <label>URL</label>
-                <input type="text" name="url" class="form-control" :class="this.errors.url ? 'is-invalid' : ''" v-model="this.data.url">
-                <div class="invalid-feedback"> {{ this.errors.url }}</div>
+                <label>Nama Usaha</label>
+                <input type="text" name="usaha" class="form-control" :class="this.errors.usaha ? 'is-invalid' : ''" v-model="this.data.usaha">
+                <div class="invalid-feedback"> {{ this.errors.usaha }}</div>
             </div>
             <div class="form-group">
-                <label>Logo <code>Max 512px x 512px</code></label>
-                <input type="file" name="logo" class="form-control" :class="this.errors.logo ? 'is-invalid' : ''" @change="submitFile">
-                <div class="invalid-feedback"> {{ this.errors.logo }}</div>
+                <label>Alamat</label>
+                <input type="text" name="alamat" class="form-control" :class="this.errors.alamat ? 'is-invalid' : ''" v-model="this.data.alamat">
+                <div class="invalid-feedback"> {{ this.errors.alamat }}</div>
+            </div>
+            <div class="form-group">
+                <label>Telp</label>
+                <input type="text" name="no_telp" class="form-control" :class="this.errors.no_telp ? 'is-invalid' : ''" v-model="this.data.no_telp">
+                <div class="invalid-feedback"> {{ this.errors.no_telp }}</div>
+            </div>
+            <div class="form-group">
+                <label>Logo <code>Max 2MB</code></label>
+                <input type="file" name="photo" class="form-control" :class="this.errors.photo ? 'is-invalid' : ''" @change="submitFile">
+                <div class="invalid-feedback"> {{ this.errors.photo }}</div>
             </div>
             <div class="d-flex justify-content-between">
-                <router-link to="/admin-halaman-terkait" class="btn bg-gradient-secondary mb-0">
+                <router-link to="/admin-umkm" class="btn bg-gradient-secondary mb-0">
                     Kembali
                 </router-link>
                 <button type="submit" class="btn bg-gradient-success mb-0">Simpan</button>
@@ -37,22 +47,21 @@ export default {
     },
     methods: {
         submitFile(event) {
-            this.data.logo = event.target.files[0];
+            this.data.photo = event.target.files[0];
         },
         submit() {
             if (this.$route.params.id) {
-                this.axios.put('related_link/' + this.$route.params.id, this.data).then((response) => {
-
+                this.axios.put('umkm/' + this.$route.params.id, this.data).then((response) => {
                     if (!response.data.error) {
-                        this.$router.push({ name: 'admin.halaman-terkait' });
+                        this.$router.push({ name: 'admin.umkm' });
                     } else {
                         this.errors = response.data.message;
                     }
                 });
             } else {
-                this.axios.post('related_link/', this.data, { headers: { 'Content-Type': 'multipart/form-data' } }).then((response) => {
+                this.axios.post('umkm', this.data, { headers: { 'Content-Type': 'multipart/form-data' } }).then((response) => {
                     if (!response.data.error) {
-                        this.$router.push({ name: 'admin.halaman-terkait' });
+                        this.$router.push({ name: 'admin.umkm' });
                     } else {
                         this.errors = response.data.message;
                     }

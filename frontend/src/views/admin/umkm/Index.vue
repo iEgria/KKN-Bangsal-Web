@@ -17,10 +17,10 @@
                     <td>{{ relatedLink.url }}</td>
                     <td>{{ relatedLink.url }}</td>
                     <td>
-                        <router-link :to="{ name: 'admin.halaman-terkait-edit', params: { id: relatedLink.id } }" class="btn btn-sm px-3 bg-gradient-warning ms-1 mb-0 text-white">
+                        <router-link :to="{ name: 'admin.umkm-edit', params: { id: relatedLink.id } }" class="btn btn-sm px-3 bg-gradient-warning ms-1 mb-0 text-white">
                             <font-awesome-icon icon="pencil"></font-awesome-icon>
                         </router-link>
-                        <owl-delete-button class="btn btn-sm px-3 bg-gradient-danger ms-1 mb-0" :url="'related_link/' + relatedLink.id" redirectUrl="admin.halaman-terkait">
+                        <owl-delete-button class="btn btn-sm px-3 bg-gradient-danger ms-1 mb-0" :url="'related_link/' + relatedLink.id" redirectUrl="admin.umkm">
                             <font-awesome-icon icon="trash"></font-awesome-icon>
                         </owl-delete-button>
                     </td>
@@ -28,7 +28,7 @@
             </tbody>
         </table>
     </div>
-    <owl-floating-button to="admin-halaman-terkait-create">
+    <owl-floating-button to="admin-umkm-create">
         Tambah
     </owl-floating-button>
 </template>

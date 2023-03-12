@@ -21,12 +21,12 @@ class RelatedLinkValidator extends LaravelValidator
         ValidatorInterface::RULE_CREATE => [
             'title' => ['required'],
             'url' => ['required', 'url'],
-            'logo' => ['image', 'dimensions:max_width=512,max_height=512']
+            'logo' => ['image', 'max:2048', 'dimensions:max_width=512,max_height=512']
         ],
         ValidatorInterface::RULE_UPDATE => [
             'title' => ['required'],
             'url' => ['required', 'url'],
-            'logo' => ['image', 'dimensions:max_width=512,max_height=512']
+            'logo' => ['image', 'max:2048', 'dimensions:max_width=512,max_height=512']
         ],
     ];
 }

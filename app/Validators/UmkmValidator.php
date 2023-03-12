@@ -18,7 +18,19 @@ class UmkmValidator extends LaravelValidator
      * @var array
      */
     protected $rules = [
-        ValidatorInterface::RULE_CREATE => [],
-        ValidatorInterface::RULE_UPDATE => [],
+        ValidatorInterface::RULE_CREATE => [
+            'pemilik' => ['required'],
+            'usaha' => ['required'],
+            'alamat' => ['required'],
+            'no_telp' => ['required'],
+            'photo' => ['image', 'max:2048'],
+        ],
+        ValidatorInterface::RULE_UPDATE => [
+            'pemilik' => ['required'],
+            'usaha' => ['required'],
+            'alamat' => ['required'],
+            'no_telp' => ['required'],
+            'photo' => ['image', 'max:2048'],
+        ],
     ];
 }

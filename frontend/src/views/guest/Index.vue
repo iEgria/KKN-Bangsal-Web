@@ -33,16 +33,12 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="card card-body text-center p-2">
-                                            <div class="text-nowrap">
-                                                36 RT
-                                            </div>
+                                            <div class="text-nowrap"> {{ this.informations.jumlahRt }} RT </div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="card card-body text-center p-2">
-                                            <div class="text-nowrap">
-                                                6 RW
-                                            </div>
+                                            <div class="text-nowrap"> {{ informations.jumlahRw }} RW </div>
                                         </div>
                                     </div>
                                 </div>
@@ -187,8 +183,6 @@ export default {
             viewer: null,
             beritas: [],
             informations: {},
-            jumlahRt: 0,
-            jumlahRw: 0
         }
     },
     methods: {
@@ -218,10 +212,13 @@ export default {
                 this.informations.luas_wilayah = response.data.data.luas_wilayah;
             }
         });
-        // this.axios.get('rt_rw').then((response) => {
-        // console.log(response.data.data);
-
-        // });
+        this.axios.get('rt_rw').then((response) => {
+            this.informations.jumlahRt = 0;
+            this.informations.jumlahRw = response.data.data.length;
+            response.data.data.forEach((row) => {
+                this.informations.jumlahRt += row.rt.length;
+            });
+        });
     },
 }
 </script>

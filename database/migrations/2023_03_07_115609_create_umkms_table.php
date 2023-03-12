@@ -15,6 +15,7 @@ return new class extends Migration
 	{
 		Schema::create('umkm', function (Blueprint $table) {
 			$table->uuid('id');
+			$table->string('photo');
 			$table->string('pemilik');
 			$table->string('usaha');
 			$table->string('alamat');

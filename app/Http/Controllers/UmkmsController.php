@@ -7,164 +7,76 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
-use App\Http\Requests\UmkmCreateRequest;
-use App\Http\Requests\UmkmUpdateRequest;
 use App\Interfaces\UmkmRepository;
 use App\Validators\UmkmValidator;
 
-/**
- * Class UmkmsController.
- *
- * @package namespace App\Http\Controllers;
- */
 class UmkmsController extends Controller
 {
-    /**
-     * @var UmkmRepository
-     */
-    protected $repository;
-
-    /**
-     * @var UmkmValidator
-     */
+    protected $Umkm;
     protected $validator;
 
-    /**
-     * UmkmsController constructor.
-     *
-     * @param UmkmRepository $repository
-     * @param UmkmValidator $validator
-     */
-    public function __construct(UmkmRepository $repository, UmkmValidator $validator)
+    public function __construct(UmkmRepository $umkmRepository, UmkmValidator $validator)
     {
-        $this->repository = $repository;
-        $this->validator  = $validator;
+        $this->Umkm = $umkmRepository;
+        $this->validator = $validator;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $umkms = $this->repository->all();
+        dd($this->Umkm->all());
+        $this->Umkm->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
 
-        if (request()->wantsJson()) {
+        return response()->json($this->Umkm->all());
+    }
 
+    public function store(Request $request)
+    {
+
+        return ($request->all());
+        try {
+            // $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
+            $Umk = $request->all();
+            if ($request->hasFile('photo')) {
+                $Umk['photo'] = str_replace('public/', '', $request->file('photo')->store('public/umkm'));
+            }
+            return $Umk;
+            // $Umkm = $this->Umkm->create($request->all());
+
+            // return response()->json([
+            //     'message' => 'Related Link created.',
+            //     'data'    => $request->all(),
+            // ]);
+        } catch (ValidatorException $e) {
             return response()->json([
-                'data' => $umkms,
+                'error'   => true,
+                'message' => $e->getMessageBag()
             ]);
         }
-
-        return view('umkms.index', compact('umkms'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  UmkmCreateRequest $request
-     *
-     * @return \Illuminate\Http\Response
-     *
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
-     */
-    public function store(UmkmCreateRequest $request)
-    {
-        try {
-
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
-
-            $umkm = $this->repository->create($request->all());
-
-            $response = [
-                'message' => 'Umkm created.',
-                'data'    => $umkm->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-            if ($request->wantsJson()) {
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
-        }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        $umkm = $this->repository->find($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $umkm,
-            ]);
-        }
-
-        return view('umkms.show', compact('umkm'));
+        return response()->json($this->Umkm->find($id));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        $umkm = $this->repository->find($id);
+        $Umkm = $this->Umkm->find($id);
 
-        return view('umkms.edit', compact('umkm'));
+        return view('Umkms.edit', compact('Umkm'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  UmkmUpdateRequest $request
-     * @param  string            $id
-     *
-     * @return Response
-     *
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
-     */
-    public function update(UmkmUpdateRequest $request, $id)
+    public function update(Request $request, $id)
     {
         try {
-
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
-
-            $umkm = $this->repository->update($request->all(), $id);
-
-            $response = [
-                'message' => 'Umkm updated.',
-                'data'    => $umkm->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
+            $Umkm = $request->all();
+            if ($request->hasFile('photo')) {
+                $Umkm['photo'] = str_replace('public/', '', $request->file('photo')->store('public/umkm'));
             }
+            $Umkm = $this->Umkm->update($Umkm, $id);
 
-            return redirect()->back()->with('message', $response['message']);
+            return response()->json($Umkm);
         } catch (ValidatorException $e) {
 
             if ($request->wantsJson()) {
@@ -180,16 +92,9 @@ class UmkmsController extends Controller
     }
 
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        $deleted = $this->repository->delete($id);
+        $deleted = $this->Umkm->delete($id);
 
         if (request()->wantsJson()) {
 
