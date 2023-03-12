@@ -67,7 +67,6 @@ class RelatedLinksController extends Controller
     public function update(Request $request, $id)
     {
         try {
-
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
             $relatedLink = $request->all();
             if ($request->hasFile('logo')) {

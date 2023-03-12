@@ -4,14 +4,14 @@
             <router-link to="/" class="navbar-brand text-white">
                 <h5 class="text-white text-uppercase"> Kelurahan Bangsal </h5>
             </router-link>
-            <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler shadow-none ms-2" :class="this.showNavbar ? 'collapsed' : ''" type="button" :aria-expanded="this.showNavbar" aria-label="Toggle navigation" @click="this.showNavbar = !this.showNavbar">
                 <span class="navbar-toggler-icon mt-2">
                     <span class="navbar-toggler-bar bar1"></span>
                     <span class="navbar-toggler-bar bar2"></span>
                     <span class="navbar-toggler-bar bar3"></span>
                 </span>
             </button>
-            <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0 ms-lg-12 ps-lg-5" id="navigation">
+            <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0 ms-lg-12 ps-lg-5 collapse" :class="this.showNavbar ? 'show' : ''" id="navigation" @click="this.showNavbar = !this.showNavbar">
                 <ul class="navbar-nav navbar-nav-hover w-100">
                     <li class="nav-item dropdown dropdown-hover mx-2 ms-lg-auto">
                         <router-link to="/home" class="nav-link ps-2 ">
@@ -97,40 +97,40 @@
             </div>
         </div>
     </header>
-    <router-view />
+    <div class="min-vh-50">
+        <router-view />
+    </div>
     <footer class="footer">
         <hr class="horizontal dark mb-5">
         <div class="container">
             <div class="row">
                 <div class="col-6 col-md-3 mb-3">
                     <h6 class="text-gradient text-primary text-sm">Halaman Terkait</h6>
-                    <div>
-                        <ul class="d-flex flex-row nav">
-                            <li class="nav-item mb-3" v-for="link in relatedLink" v-bind:key="link">
-                                <a :href="link.url">
-                                    <img :src="link.logo" class="avatar avatar-xl me-3 shadow-lg" :alt="link.title">
-                                </a>
-                            </li>
-                        </ul>
+                    <div class="row">
+                        <div class="col-6 col-md-4" v-for="link in relatedLink" v-bind:key="link">
+                            <a :href="link.url">
+                                <img :src="link.logo" class="img-fluid mb-3 rounded-3 shadow-lg" :alt="link.title">
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3 mb-3">
                     <h6 class="text-gradient text-primary text-sm">Hubungi Kami</h6>
                     <ul class="flex-column ms-n3 nav">
-                        <li class="nav-item">
-                            <a class="nav-link" :href="'mailto:' + this.information.email" target="_blank">
+                        <li class="nav-item w-100">
+                            <a class="nav-link text-truncate" :href="'mailto:' + this.information.email" target="_blank">
                                 <font-awesome-icon icon="envelope" class="me-2"></font-awesome-icon>
                                 {{ this.information.email }}
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" :href="'tel:' + this.information.phone" target="_blank">
+                        <li class="nav-item w-100">
+                            <a class="nav-link text-truncate" :href="'tel:' + this.information.phone" target="_blank">
                                 <font-awesome-icon icon="phone" class="me-2"></font-awesome-icon>
                                 {{ this.information.phone }}
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://instagram.com/kelurahan_bangsal" target="_blank">
+                        <li class="nav-item w-100">
+                            <a class="nav-link text-truncate" href="https://instagram.com/kelurahan_bangsal" target="_blank">
                                 <font-awesome-icon icon="fa-brands fa-instagram" class="me-2"></font-awesome-icon>
                                 {{ this.information.instagram }}
                             </a>
@@ -164,6 +164,7 @@ export default {
             relatedLink: {},
             selectedHeader: 0,
             showPelayanan: false,
+            showNavbar: false,
             pelayanans: {},
         }
     },

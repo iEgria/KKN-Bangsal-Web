@@ -62,7 +62,7 @@ class AuthController extends Controller
 
             return response()->json([
                 'message' => 'Sukses Update Password.',
-                'data'    => $user->toArray(),
+                'data'    => $user
             ]);
         } catch (ValidatorException $e) {
             return response()->json([

@@ -22,13 +22,16 @@ class GeneralInformationTransformer extends TransformerAbstract
     public function transform(GeneralInformation $model)
     {
         return [
-            'id'         => (int) $model->id,
+            'id'         => $model->id,
             'email'      => $model->email,
             'phone'      => $model->phone,
             'instagram'  => $model->instagram,
             'sejarah_desa'  => $model->sejarah_desa,
             'visi_misi'  => $model->visi_misi,
-            'updated_at' => $model->updated_at
+            'luas_wilayah'  => $model->luas_wilayah,
+            'penduduk_pria' => (int) $model->penduduk_pria,
+            'penduduk_wanita' => (int) $model->penduduk_wanita,
+            'updated_at' => $model->updated_at,
         ];
     }
 }

@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Interfaces\beritaRepository;
+use App\Interfaces\BeritaRepository;
 use App\Entities\Berita;
 use App\Presenters\BeritaPresenter;
 use App\Validators\BeritaValidator;

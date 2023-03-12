@@ -20,9 +20,13 @@ class ChangePasswordValidator extends LaravelValidator
     protected $rules = [
         ValidatorInterface::RULE_CREATE => [],
         ValidatorInterface::RULE_UPDATE => [
-            'password_old' => ['required', 'current_password:api'],
-            'password' => ['required', 'confirmed'],
+            'password_old' => ['required', 'current_password:sanctum'],
+            'password' => ['required', 'min:8', 'confirmed', 'regex:/[a-z]/', 'regex:/[A-Z]/', 'regex:/[0-9]/'],
             'password_confirmation' => ['required'],
         ],
+    ];
+
+    protected $messages = [
+        'password.regex' => 'Password harus mencangkup satu huruf besar dan angka'
     ];
 }

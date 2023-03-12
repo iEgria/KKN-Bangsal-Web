@@ -12,7 +12,7 @@
                 <div class="invalid-feedback"> {{ this.errors.title }}</div>
             </div>
             <div class="form-group">
-                <label>Beritas</label>
+                <label>Berita</label>
                 <ckeditor :editor="editor" v-model="this.data.content" :config="editorConfig"></ckeditor>
                 <div class="invalid-feedback"> {{ this.errors.content }}</div>
             </div>

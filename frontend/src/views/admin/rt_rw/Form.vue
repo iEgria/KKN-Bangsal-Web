@@ -9,8 +9,8 @@
                         <div class="invalid-feedback"> {{ this.errors.rt_number }}</div>
                     </div>
                 </div>
-                <div class="col-3" v-if="!this.$route.params.rw_id && this.data.rw_number">
-                    <div class="form-group">
+                <div class="col-3" v-if="!this.$route.params.rw_id && !this.data.rt_number">
+                    <div class=" form-group">
                         <label>RW</label>
                         <input type="text" name="rw_number" class="form-control" :class="this.errors.rw_number ? 'is-invalid' : ''" v-model="this.data.rw_number">
                         <div class="invalid-feedback"> {{ this.errors.rw_number }}</div>

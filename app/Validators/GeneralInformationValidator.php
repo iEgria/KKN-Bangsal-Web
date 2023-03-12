@@ -24,6 +24,8 @@ class GeneralInformationValidator extends LaravelValidator
             'phone' => ['required'],
             'sejarah_desa' => ['required'],
             'visi_misi' => ['required'],
+            'penduduk_pria' => ['required', 'integer'],
+            'penduduk_wanita' => ['required', 'integer']
         ],
         ValidatorInterface::RULE_UPDATE => [
             'email' => ['required', ['email']],
@@ -31,6 +33,8 @@ class GeneralInformationValidator extends LaravelValidator
             'phone' => ['required'],
             'sejarah_desa' => ['required'],
             'visi_misi' => ['required'],
+            'penduduk_pria' => ['required', 'integer'],
+            'penduduk_wanita' => ['required', 'integer']
         ],
     ];
 }

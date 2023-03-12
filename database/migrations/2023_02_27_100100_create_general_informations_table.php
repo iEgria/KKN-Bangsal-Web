@@ -18,6 +18,9 @@ return new class extends Migration
 			$table->string('email');
 			$table->string('phone');
 			$table->string('instagram');
+			$table->integer('penduduk_pria')->default(0);
+			$table->integer('penduduk_wanita')->default(0);
+			$table->string('luas_wilayah')->default('');
 			$table->longText('sejarah_desa');
 			$table->longText('visi_misi');
 			$table->timestamps();

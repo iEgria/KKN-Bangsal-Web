@@ -6,20 +6,20 @@
                     <div class="row">
                         <div class="col-12 col-lg-5">
                             <div class="card card-body bg-gradient-info p-3 mb-3">
-                                <h5 class="text-white text-center h1 font-weight-bolder mb-2 p-2">6.303</h5>
+                                <h5 class="text-white text-center h1 font-weight-bolder mb-2 p-2">{{ parseInt((this.informations.penduduk_pria + this.informations.penduduk_wanita)).toLocaleString('id') }}</h5>
                                 <p class="text-white text-center">Jumlah Penduduk</p>
                                 <div class="row">
                                     <div class="col">
                                         <div class="card card-body text-center p-2">
                                             <div class="text-nowrap">
-                                                <font-awesome-icon icon="mars" class="text-gradient text-info"></font-awesome-icon> <span class="text-dark">3.166</span>
+                                                <font-awesome-icon icon="mars" class="text-gradient text-info"></font-awesome-icon> <span class="text-dark">{{ parseInt(this.informations.penduduk_pria).toLocaleString('id') }}</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="card card-body text-center p-2">
                                             <div class="text-nowrap">
-                                                <font-awesome-icon icon="venus" class="text-gradient text-danger"></font-awesome-icon> <span class="text-dark">3.140</span>
+                                                <font-awesome-icon icon="venus" class="text-gradient text-danger"></font-awesome-icon> <span class="text-dark">{{ parseInt(this.informations.penduduk_wanita).toLocaleString('id') }}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -28,7 +28,7 @@
                         </div>
                         <router-link to="rt-rw" class="col-12 col-lg-5">
                             <div class="card card-body bg-gradient-warning p-3 mb-3">
-                                <h5 class="text-white text-center h1 font-weight-bolder mb-2 p-2">11,16 Ha</h5>
+                                <h5 class="text-white text-center h1 font-weight-bolder mb-2 p-2">{{ this.informations.luas_wilayah }}</h5>
                                 <p class="text-white text-center">Luas Wilayah</p>
                                 <div class="row">
                                     <div class="col">
@@ -52,14 +52,14 @@
                     <div class="row" style="cursor: pointer;" @click="this.showUmkm = true">
                         <router-link to="umkm" class="col-12 col-lg-5 offset-lg-2">
                             <div class="card card-body bg-gradient-danger p-4 mb-3">
-                                <h5 class="text-white text-center h1 font-weight-bolder mt-2">-+ 100</h5>
+                                <h5 class="text-white text-center h1 font-weight-bolder mt-2">0</h5>
                                 <p class="text-white text-center m-2">Jumlah UMKM</p>
                             </div>
                         </router-link>
                         <router-link to="kelembagaan" class="col-12 col-lg-5">
                             <div class="card card-body bg-gradient-success p-4 mb-3">
-                                <h5 class="text-white text-center h1 font-weight-bolder mt-2">7</h5>
-                                <p class="text-white text-center m-2">Jumlah Kelembagaan</p>
+                                <h5 class="text-white text-center h1 font-weight-bolder mt-2">{{ this.beritas.length }}</h5>
+                                <p class="text-white text-center m-2">Jumlah Berita</p>
                             </div>
                         </router-link>
                     </div>
@@ -104,31 +104,35 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6 col-12 mb-4" v-for="berita in this.beritas" v-bind:key="berita" style="z-index:2">
-                    <div class="card card-profile overflow-hidden">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6 col-12 pe-lg-0">
-                                <a href="javascript:;">
-                                    <div class="p-3 pe-md-0">
-                                        <img class="w-100 border-radius-md" :src="berita.url_gambar" alt="image">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-8 col-md-6 col-12 ps-lg-0 my-auto">
-                                <div class="card-body">
-                                    <router-link :to="{ name: 'guest.berita.show', params: { id: 'lihat-berita' } }" class="text-primary">
-                                        <h5 class="mb-0 text-truncate">{{ berita.judul }}</h5>
-                                    </router-link>
-                                    <small class="text-dark">{{ berita.tanggal }}</small>
-                                    <p class="mb-0">{{ berita.teks }}
-                                        <router-link :to="{ name: 'guest.berita.show', params: { id: 'lihat-berita' } }" class="text-primary">
-                                            Baca Selengkapnya
+                <div class="col-lg-6 col-12 mb-4" v-for="(berita, index) in this.beritas" v-bind:key="index" style="z-index:2">
+                    <template v-if="index < 4">
+                        <div class="card card-profile overflow-hidden">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 col-12 pe-lg-0">
+                                    <a href="javascript:;">
+                                        <div class="p-md-3 pt-3 px-3">
+                                            <div class="card card-body p-5" style="background-position: center; background-size: cover;" :style="'background-image: url(' + berita.cover + ')'">
+                                                <span class="m-4 m-md-2"></span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-12 ps-lg-0 my-auto">
+                                    <div class="card-body">
+                                        <router-link :to="{ name: 'guest.berita.show', params: { id: berita.slug } }" class="text-primary">
+                                            <h5 class="mb-0 text-truncate">{{ berita.title }}</h5>
                                         </router-link>
-                                    </p>
+                                        <small class="text-dark">{{ berita.published_at_human_date }}</small>
+                                        <p class="mb-0">{{ berita.content_short }}
+                                            <router-link :to="{ name: 'guest.berita.show', params: { id: berita.slug } }" class="text-primary">
+                                                Baca Selengkapnya
+                                            </router-link>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </template>
                 </div>
             </div>
         </div>
@@ -181,32 +185,10 @@ export default {
             startPhotos: 0,
             photos: {},
             viewer: null,
-            beritas: [
-                {
-                    judul: 'Kuak Potensi Desa Demi Pembangunan di Indonesia',
-                    tanggal: '01 Februari 2023',
-                    url_gambar: 'https://kertamulya-padalarang.desa.id/assets/files/data/website-desa-kertamulya-3217082001/desa2.jpg',
-                    teks: '“Negara Kepulauan” merupakan salah satu julukan yang dimiliki Indonesia. Ribuan pulau terbentang...',
-                },
-                {
-                    judul: 'Pembangunan Indonesia Harus Dimulai dari Desa',
-                    tanggal: '05 Februari 2023',
-                    url_gambar: 'https://kertamulya-padalarang.desa.id/assets/files/data/website-desa-kertamulya-3217082001/24391a1104f17cf51db1567b5cfe0e2f.jpg',
-                    teks: 'Wakil Ketua Komite II DPD RI, Parlindungan Purba mengatakan pembangunan Indonesia harus dimulai dari desa...'
-                },
-                {
-                    judul: 'Wujudkan Desa Berbasis IT',
-                    tanggal: '15 Februari 2023',
-                    url_gambar: 'https://kertamulya-padalarang.desa.id/assets/files/data/website-desa-kertamulya-3217082001/jasa_pembuatan_website_desa_1030.jpg',
-                    teks: 'Perkembangan teknologi komunikasi dan informasi terutama internet saat ini membawa kemajuan yang sangat ...'
-                },
-                {
-                    judul: 'Inisiasi Pembentukan Forum Data sebagai penunjang Sistem Informasi Desa (SID)',
-                    tanggal: '21 Februari 2023',
-                    url_gambar: 'https://kertamulya-padalarang.desa.id/assets/files/data/website-desa-kertamulya-3217082001/indicatornews_3_800x533_L_141260.jpg',
-                    teks: 'Sistem Informasi Desa (SID) adalah sebuah platform teknologi informasi komunikasi untuk mendukung pengelolaan ...'
-                }
-            ],
+            beritas: [],
+            informations: {},
+            jumlahRt: 0,
+            jumlahRw: 0
         }
     },
     methods: {
@@ -226,6 +208,20 @@ export default {
                 }, 100);
             }
         });
+        this.axios.get('berita').then((response) => {
+            this.beritas = response.data.data;
+        });
+        this.axios.get('information').then((response) => {
+            if (response.data.data) {
+                this.informations.penduduk_pria = response.data.data.penduduk_pria;
+                this.informations.penduduk_wanita = response.data.data.penduduk_wanita;
+                this.informations.luas_wilayah = response.data.data.luas_wilayah;
+            }
+        });
+        // this.axios.get('rt_rw').then((response) => {
+        // console.log(response.data.data);
+
+        // });
     },
 }
 </script>

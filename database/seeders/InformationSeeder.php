@@ -19,6 +19,9 @@ class InformationSeeder extends Seeder
             'instagram' => 'kelurahan_bangsal',
             'sejarah_desa' => 'Nama bangsal yang berarti Tempat Peristirahatan diambil dari sejarah ketika masa peperangan dimana tempat yang sekarang menjadi kelurahan bangal ini digunakan sebagai tempat peristirahatan oleh pasukan pangeran Diponegoro yang sedang berperang dari Jawa Barat ke Jawa Timur.',
             'visi_misi' => '-',
+            'penduduk_pria' => '3166',
+            'penduduk_wanita' => '3140',
+            'luas_wilayah' => '11, 16 Ha'
         ]);
     }
 }

@@ -2,24 +2,25 @@
 
 namespace App\Entities;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
 /**
- * Class GeneralInformation.
+ * Class Umkm.
  *
  * @package namespace App\Entities;
  */
-class GeneralInformation extends Model implements Transformable
+class Umkm extends Model implements Transformable
 {
-    use TransformableTrait;
+    use TransformableTrait, HasUuids;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $table = 'general_information';
-    protected $fillable = ['email', 'phone', 'instagram', 'sejarah_desa', 'visi_misi', 'penduduk_pria', 'penduduk_wanita', 'luas_wilayah'];
+    protected $table = ['umkm'];
+    protected $fillable = ['pemilik', 'usaha', 'alamat', 'no_telp'];
 }

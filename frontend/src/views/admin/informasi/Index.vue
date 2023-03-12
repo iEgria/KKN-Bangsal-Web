@@ -16,6 +16,27 @@
                 <input type="text" name="instagram" class="form-control" :class="this.errors.instagram ? 'is-invalid' : ''" v-model="this.data.instagram">
                 <div class="invalid-feedback"> {{ this.errors.instagram }}</div>
             </div>
+            <div class="form-group">
+                <label>Luas Wilayah</label>
+                <input type="text" name="luas_wilayah" class="form-control" :class="this.errors.luas_wilayah ? 'is-invalid' : ''" v-model="this.data.luas_wilayah">
+                <div class="invalid-feedback"> {{ this.errors.luas_wilayah }}</div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label>Penduduk Pria</label>
+                        <input type="text" name="penduduk_pria" class="form-control" :class="this.errors.penduduk_pria ? 'is-invalid' : ''" v-model="this.data.penduduk_pria">
+                        <div class="invalid-feedback"> {{ this.errors.penduduk_pria }}</div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label>Penduduk Wanita</label>
+                        <input type="text" name="penduduk_wanita" class="form-control" :class="this.errors.penduduk_wanita ? 'is-invalid' : ''" v-model="this.data.penduduk_wanita">
+                        <div class="invalid-feedback"> {{ this.errors.penduduk_wanita }}</div>
+                    </div>
+                </div>
+            </div>
             <div class="d-flex justify-content-end">
                 <button type="submit" class="btn bg-gradient-success mb-0">Simpan</button>
             </div>

@@ -18,11 +18,6 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
         return User::class;
     }
 
-    // public function validator()
-    // {
-    //     return UserValidator::class;
-    // }
-
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
